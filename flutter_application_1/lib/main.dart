@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Dichotomic.dart';
 import 'MultipleChoiceQuestion.dart';
+import 'Log.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
         body: const Center(
-          child: MyHomePage(),
+          child: LogPage(),
         ),
       ),
     );
