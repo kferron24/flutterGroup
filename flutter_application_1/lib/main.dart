@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Questionaire'),
     );
   }
 }
@@ -76,9 +76,180 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: SingleChildScrollView(
+              child: Column(children: [
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+        Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Center(
+            child: Text(
+              'Question Dichotomique?',
+              style:
+                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+        ),
+        Container(
+          height: 40.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Center(
+            child: Text(
+              'Voulez vous coucher avec moi ce soir?',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        const MyButtons(),
+      ]))
+
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -93,25 +264,78 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // const Text(
-            //   'You have pushed the button this many times:',
-            // ),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headline4,
-            // ),
-            const Text("Selectable text"),
-            Text("Selectable text"),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          ),
     );
   }
 }
+
+class MyButtons extends StatelessWidget {
+  const MyButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            const snackBar =
+                SnackBar(content: Text('Thanks for your answer: Yes'));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+          child: Container(
+            height: 50.0,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.0),
+              color: const Color.fromARGB(255, 74, 195, 84),
+            ),
+            child: const Center(
+              child: Text('Yes'),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            const snackBar =
+                SnackBar(content: Text('Thanks for your answer : No'));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+          child: Container(
+            height: 50.0,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.0),
+              color: const Color.fromARGB(255, 195, 74, 74),
+            ),
+            child: const Center(
+              child: Text('No'),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+
+    // return GestureDetector(
+    //   onTap: () {
+    //     print('Yes');
+    //   },
+    //   child: Container(
+    //     height: 50.0,
+    //     padding: const EdgeInsets.all(8.0),
+    //     margin: const EdgeInsets.symmetric(horizontal: 8.0),
+    //     decoration: BoxDecoration(
+    //       borderRadius: BorderRadius.circular(5.0),
+    //       color: Color.fromARGB(255, 74, 191, 195),
+    //     ),
+    //     child: const Center(
+    //       child: Text('Yes'),
+    //     ),
+    //   ),
+    // );
