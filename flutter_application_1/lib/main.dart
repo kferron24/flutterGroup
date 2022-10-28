@@ -17,7 +17,18 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
         body: const Center(
-          child: MyHomePage(),
+          child: MultipleChoiceQuestion(
+            question:"Quels fruits aimez-vous?",
+            questionID:1,
+            possibleAnswers:['Banane',
+              'Pomme',
+              'Framboise',
+              'Fraise',
+              'Mangue',
+              "Pamplemousse",
+              "Orange",
+              "Mandarine"]
+          ),
         ),
       ),
     );
