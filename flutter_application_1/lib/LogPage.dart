@@ -130,7 +130,7 @@ class _LogPageState extends State<LogPage> {
                     color: Color.fromRGBO(0, 53, 63, 1),
                   ),
                 ),
-                const SizedBox(height: 70.0),
+                const SizedBox(height: 40.0),
                 Container(
                   width: double.infinity,
                   child: RawMaterialButton(
@@ -154,6 +154,42 @@ class _LogPageState extends State<LogPage> {
                     child: const Text("Login",
                         style: TextStyle(
                           color: Colors.black,
+                          fontSize: 18.0,
+                        )),
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+                Container(
+                  width: double.infinity,
+                  child: RawMaterialButton(
+                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    elevation: 0.0,
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    onPressed: () async {
+                      try {
+                        await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: _emailController.text.trim(),
+                                password: _passwordController.text.trim());
+                      } on FirebaseAuthException catch (e) {
+                        print(e);
+                      }
+                      User? user = await loginUsingEmailPassword(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          context: context);
+                      print(user);
+                      if (user != null) {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                      }
+                    },
+                    child: const Text("Sign Up",
+                        style: TextStyle(
+                          color: Colors.white,
                           fontSize: 18.0,
                         )),
                   ),

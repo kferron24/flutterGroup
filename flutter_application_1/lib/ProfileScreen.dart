@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -16,6 +17,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -77,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "Your Name:",
+                  "Your Email:",
                   style: TextStyle(
                     color: Color.fromRGBO(67, 12, 5, 1),
                     fontSize: 25.0,
@@ -85,9 +87,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                const Text(
-                  "Alexandre",
-                  style: TextStyle(
+                Text(
+                  user.email!,
+                  style: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
