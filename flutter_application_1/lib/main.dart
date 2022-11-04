@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-import 'Dichotomic.dart';
-import 'MultipleChoiceQuestion.dart';
-import 'Log.dart';
+import 'HomePage.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,10 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const Center(
-          child: LogPage(),
+      theme:
+          ThemeData(scaffoldBackgroundColor: Color.fromRGBO(255, 191, 102, 1)),
+      home: const Scaffold(
+        body: Center(
+          child: HomePage(),
         ),
       ),
     );
