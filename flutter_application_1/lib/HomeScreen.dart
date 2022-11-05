@@ -3,9 +3,11 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/LogPage.dart';
 import 'package:flutter_application_1/ProfileScreen.dart';
+import 'package:flutter_application_1/TextQuestion.dart';
 
 import 'HomePage.dart';
 import 'TextSlider.dart';
+import 'TextQuestion.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -109,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const TextSlider()));
+                          builder: (context) => const TextQuestion()));
                     },
                     child: const Text("YES",
                         style: TextStyle(
