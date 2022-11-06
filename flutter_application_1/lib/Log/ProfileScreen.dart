@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/LogPage.dart';
+import 'package:flutter_application_1/Log/LogPage.dart';
 
-import 'HomePage.dart';
-import 'HomeScreen.dart';
+import '../HomePage.dart';
+import '../HomeScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/LogPage.dart';
-import 'package:flutter_application_1/ProfileScreen.dart';
-import 'package:flutter_application_1/TextSlider.dart';
+import 'package:flutter_application_1/Log/LogPage.dart';
+import 'package:flutter_application_1/Log/ProfileScreen.dart';
+import 'package:flutter_application_1/QuestionWidgets/TextSlider.dart';
 
-import 'HomePage.dart';
+import '../HomePage.dart';
 import 'TextSlider.dart';
 
 class TextQuestion extends StatefulWidget {
