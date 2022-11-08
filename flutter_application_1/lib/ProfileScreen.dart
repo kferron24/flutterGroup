@@ -22,17 +22,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(
-                width: 10,
-              ),
               const Text(
                 'QUIZZ',
                 style: TextStyle(color: Color.fromRGBO(67, 12, 5, 1)),
-              ),
-              const SizedBox(
-                width: 215,
               ),
               Container(
                 height: 44,

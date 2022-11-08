@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/LogPage.dart';
 import 'package:flutter_application_1/ProfileScreen.dart';
-
+import 'package:flutter_application_1/TextQuestion.dart';
+import 'HomeScreen.dart';
 import 'HomePage.dart';
-import 'EndOfQuizz.dart';
+import 'TextSlider.dart';
+import 'TextQuestion.dart';
 
-class TextSlider extends StatefulWidget {
-  const TextSlider({super.key});
+class EndOfQuizz extends StatefulWidget {
+  const EndOfQuizz({super.key});
 
   @override
-  State<TextSlider> createState() => _TextSliderState();
+  State<EndOfQuizz> createState() => _EndOfQuizzState();
 }
 
-class _TextSliderState extends State<TextSlider> {
-  double _value = 20;
+class _EndOfQuizzState extends State<EndOfQuizz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,25 +71,16 @@ class _TextSliderState extends State<TextSlider> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                  "Slider Question",
+                  "End of the quizz",
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
-                    fontSize: 50.0,
+                    fontSize: 45.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "How would you rate your",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                const Text(
-                  "experience out of 10",
+                  "Thank you for participating",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25.0,
@@ -95,19 +88,6 @@ class _TextSliderState extends State<TextSlider> {
                   ),
                 ),
                 const SizedBox(height: 22.0),
-                Slider(
-                  min: 0.0,
-                  max: 100.0,
-                  value: _value,
-                  divisions: 10,
-                  label: '${_value.round()}',
-                  onChanged: (value) {
-                    setState(() {
-                      _value = value;
-                    });
-                  },
-                ),
-                const SizedBox(height: 12.0),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -123,16 +103,16 @@ class _TextSliderState extends State<TextSlider> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const EndOfQuizz()));
+                          builder: (context) => const HomeScreen()));
                     },
-                    child: const Text("SUBMIT",
+                    child: const Text("Home Screen",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,
                         )),
                   ),
                 ),
-                const SizedBox(height: 50.0),
+                const SizedBox(height: 22.0),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(

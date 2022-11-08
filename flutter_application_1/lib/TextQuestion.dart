@@ -6,7 +6,9 @@ import 'package:flutter_application_1/ProfileScreen.dart';
 import 'package:flutter_application_1/TextSlider.dart';
 
 import 'HomePage.dart';
+import 'ChooseTheme.dart';
 import 'TextSlider.dart';
+import 'ImageQuestion.dart';
 
 class TextQuestion extends StatefulWidget {
   const TextQuestion({super.key});
@@ -23,7 +25,7 @@ class _TextQuestionState extends State<TextQuestion> {
         appBar: AppBar(
           centerTitle: true,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(
                 width: 10,
@@ -109,7 +111,7 @@ class _TextQuestionState extends State<TextQuestion> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const TextSlider()));
+                          builder: (context) => const ChooseTheme()));
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(
