@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ImageQuestion.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/LogPage.dart';
-import 'package:flutter_application_1/ProfileScreen.dart';
-import 'package:flutter_application_1/TextQuestion.dart';
-
-import 'HomePage.dart';
-import 'TextSlider.dart';
+import '../Log/LogPage.dart';
+import '../Log/ProfileScreen.dart';
 import 'TextQuestion.dart';
 
-class ChooseTheme extends StatefulWidget {
-  const ChooseTheme({super.key});
+import '../HomePage.dart';
+import 'TextSlider.dart';
+
+class ImageQuestion extends StatefulWidget {
+  const ImageQuestion({super.key});
 
   @override
-  State<ChooseTheme> createState() => _ChooseThemeState();
+  State<ImageQuestion> createState() => _ImageQuestionState();
 }
 
-class _ChooseThemeState extends State<ChooseTheme> {
+class _ImageQuestionState extends State<ImageQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +70,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                  "Theme",
+                  "Image Question",
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
                     fontSize: 45.0,
@@ -81,7 +79,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "Choose a theme",
+                  "Select your favourite car",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25.0,
@@ -100,7 +98,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
                           width: 150,
                           height: 100,
                           image: const AssetImage(
-                            'assets/marvel.jpg',
+                            'assets/fiat.png',
                           ),
                         ),
                       ),
@@ -108,15 +106,15 @@ class _ChooseThemeState extends State<ChooseTheme> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const ImageQuestion()));
+                                  builder: (context) => const TextSlider()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(
                           fit: BoxFit.cover, // Fixes border issues
                           width: 150,
-                          height: 100,
+                          height: 80,
                           image: const AssetImage(
-                            'assets/cars.jpg',
+                            'assets/bugatti.png',
                           ),
                         ),
                       ),
@@ -131,9 +129,9 @@ class _ChooseThemeState extends State<ChooseTheme> {
                         child: Ink.image(
                           fit: BoxFit.cover, // Fixes border issues
                           width: 150,
-                          height: 100,
+                          height: 80,
                           image: const AssetImage(
-                            'assets/sports.jpeg',
+                            'assets/amg.png',
                           ),
                         ),
                       ),
@@ -142,10 +140,10 @@ class _ChooseThemeState extends State<ChooseTheme> {
                         splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(
                           fit: BoxFit.cover, // Fixes border issues
-                          width: 150,
+                          width: 200,
                           height: 100,
                           image: const AssetImage(
-                            'assets/videoGame.jpg',
+                            'assets/urus.png',
                           ),
                         ),
                       ),

@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/LogPage.dart';
-import 'package:flutter_application_1/ProfileScreen.dart';
-import 'package:flutter_application_1/TextQuestion.dart';
+import '../Log/LogPage.dart';
+import '../Log/ProfileScreen.dart';
 import 'HomeScreen.dart';
 import 'HomePage.dart';
-import 'TextSlider.dart';
-import 'TextQuestion.dart';
+import 'QuestionWidgets/TextSlider.dart';
+import 'QuestionWidgets/TextQuestion.dart';
 
 class EndOfQuizz extends StatefulWidget {
   const EndOfQuizz({super.key});
