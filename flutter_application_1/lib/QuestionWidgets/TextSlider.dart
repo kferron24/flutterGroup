@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/LogPage.dart';
-import 'package:flutter_application_1/ProfileScreen.dart';
-
-import 'HomePage.dart';
+import 'package:flutter_application_1/Log/LogPage.dart';
+import 'package:flutter_application_1/Log/ProfileScreen.dart';
 
 class TextSlider extends StatefulWidget {
   const TextSlider({super.key});

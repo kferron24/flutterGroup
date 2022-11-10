@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
-
 class MultipleChoiceQuestion extends StatefulWidget {
   final String? question;
   final int questionID;
-  final List<String> possibleAnswers;
+  final List<String> options;
+  final int next;
 
 
   const MultipleChoiceQuestion(
     {super.key,
     required this.question,
     required this.questionID,
-    required this.possibleAnswers, 
+    required this.options,
+    required this.next, 
   });
 
 
@@ -22,7 +23,7 @@ class MultipleChoiceQuestion extends StatefulWidget {
 class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
   @override
   Widget build(BuildContext context) {
-    Map<String,bool> mapAnswers = {for (var item in widget.possibleAnswers) item : false};
+    Map<String,bool> mapAnswers = {for (var item in widget.options) item : false};
     return Center(
           child: Column(children: [
           Container(

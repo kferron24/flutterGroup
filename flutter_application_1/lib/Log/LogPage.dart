@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/HomeScreen.dart';
 import '../QuestionWidgets/MultipleChoiceQuestion.dart';
-import '../QuestionWidgets/Dichotomic.dart';
+import '../QuestionWidgets/DichotomicQuestion.dart';
 import '../HomePage.dart';
 import '../HomeScreen.dart';
 import 'ProfileScreen.dart';
