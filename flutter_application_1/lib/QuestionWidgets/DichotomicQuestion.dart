@@ -19,7 +19,7 @@ class DichotomicQuestion extends StatefulWidget {
 }
 
 class _DichotomicQuestionState extends State<DichotomicQuestion> {
-  var answer="";
+  var answer = "";
 
   void buttonpressed() {
     print(answer);
@@ -27,42 +27,40 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Material(
+      child: Container(
         margin: const EdgeInsets.all(15.0),
         padding: const EdgeInsets.all(3.0),
-        child: Column(
-          children:[
-            Text(
-              widget.question!,
-              style: const TextStyle(
-                fontSize: 20,
-              ),
+        child: Column(children: [
+          Text(
+            widget.question!,
+            style: const TextStyle(
+              fontSize: 20,
             ),
-
-            ...widget.options!
+          ),
+          ...widget.options!
               .map((option) => [
                     RadioListTile<String>(
                       value: option,
                       groupValue: answer,
                       title: Text(option),
-                      onChanged: (v) =>
-                          setState(() => answer = v!),
+                      onChanged: (v) => setState(() => answer = v!),
                     )
                   ])
               .expand((w) => w)
               .toList(),
-
-            TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.blueAccent,
-                textStyle: const TextStyle(fontSize: 15),
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.all(10.0),
-              ),
-              onPressed: buttonpressed,
-              child: const Text('Submit'),
-            )
-            ]),
-        );
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blueAccent,
+              textStyle: const TextStyle(fontSize: 15),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.all(10.0),
+            ),
+            onPressed: buttonpressed,
+            child: const Text('Submit'),
+          )
+        ]),
+      )
+    );
   }
 }

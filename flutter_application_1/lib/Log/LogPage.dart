@@ -56,7 +56,7 @@ class _LogPageState extends State<LogPage> {
               ),
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor:const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -134,7 +134,7 @@ class _LogPageState extends State<LogPage> {
                 Container(
                   width: double.infinity,
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(212, 111, 77, 1),
+                    fillColor:const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -162,7 +162,7 @@ class _LogPageState extends State<LogPage> {
                 Container(
                   width: double.infinity,
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor:const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

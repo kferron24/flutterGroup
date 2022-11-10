@@ -7,6 +7,8 @@ import 'package:flutter_application_1/QuestionWidgets/TextSlider.dart';
 
 import '../HomePage.dart';
 import 'TextSlider.dart';
+import 'ImageQuestion.dart';
+import 'ChooseTheme.dart';
 
 class TextQuestion extends StatefulWidget {
   const TextQuestion({super.key});
@@ -23,7 +25,7 @@ class _TextQuestionState extends State<TextQuestion> {
         appBar: AppBar(
           centerTitle: true,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(
                 width: 10,
@@ -38,10 +40,10 @@ class _TextQuestionState extends State<TextQuestion> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                        color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
+                  fillColor:const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -60,7 +62,7 @@ class _TextQuestionState extends State<TextQuestion> {
               )
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor:const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -98,10 +100,10 @@ class _TextQuestionState extends State<TextQuestion> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))), //
+                          color:const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius:const BorderRadius.all(Radius.circular(20.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(212, 111, 77, 1),
+                    fillColor:const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -109,7 +111,7 @@ class _TextQuestionState extends State<TextQuestion> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const TextSlider()));
+                          builder: (context) => const ChooseTheme()));
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(
@@ -123,10 +125,10 @@ class _TextQuestionState extends State<TextQuestion> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor:const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

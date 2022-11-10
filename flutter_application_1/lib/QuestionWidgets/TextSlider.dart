@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_application_1/Log/LogPage.dart';
 import 'package:flutter_application_1/Log/ProfileScreen.dart';
+import '../EndOfQuizz.dart';
 
 class TextSlider extends StatefulWidget {
   const TextSlider({super.key});
@@ -19,7 +21,7 @@ class _TextSliderState extends State<TextSlider> {
         appBar: AppBar(
           centerTitle: true,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(
                 width: 10,
@@ -34,10 +36,10 @@ class _TextSliderState extends State<TextSlider> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                        color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
+                  fillColor:const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -56,7 +58,7 @@ class _TextSliderState extends State<TextSlider> {
               )
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor:const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -109,10 +111,10 @@ class _TextSliderState extends State<TextSlider> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))), //
+                          color: const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius: const BorderRadius.all(Radius.circular(20.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(212, 111, 77, 1),
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -120,7 +122,7 @@ class _TextSliderState extends State<TextSlider> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const LogPage()));
+                          builder: (context) => const EndOfQuizz()));
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(
@@ -134,10 +136,10 @@ class _TextSliderState extends State<TextSlider> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius: const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor:const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
