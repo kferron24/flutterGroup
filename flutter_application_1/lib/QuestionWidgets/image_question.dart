@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import '../Log/LogPage.dart';
-import '../Log/ProfileScreen.dart';
-import 'TextQuestion.dart';
+import '../Log/log_page.dart';
+import '../Log/profile_screen.dart';
+import 'text_slider.dart';
 
-import '../HomePage.dart';
-import 'TextSlider.dart';
+const List<Widget> icons = <Widget>[
+  Icon(Icons.sunny),
+  Icon(Icons.cloud),
+  Icon(Icons.ac_unit),
+];
+
+final List<bool> _selectedWeather = <bool>[false, false, true];
+bool vertical = false;
 
 class ImageQuestion extends StatefulWidget {
   const ImageQuestion({super.key});
@@ -38,10 +41,11 @@ class _ImageQuestionState extends State<ImageQuestion> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                        color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
+                  fillColor: const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -60,7 +64,7 @@ class _ImageQuestionState extends State<ImageQuestion> {
               )
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -148,15 +152,34 @@ class _ImageQuestionState extends State<ImageQuestion> {
                         ),
                       ),
                     ]),
-                const SizedBox(height: 50.0),
+                const SizedBox(height: 10.0),
+                ToggleButtons(
+                  direction: vertical ? Axis.vertical : Axis.horizontal,
+                  onPressed: (int index) {
+                    setState(() {
+                      // The button that is tapped is set to true, and the others to false.
+                      for (int i = 0; i < _selectedWeather.length; i++) {
+                        _selectedWeather[i] = i == index;
+                      }
+                    });
+                  },
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  selectedBorderColor: Colors.blue[700],
+                  selectedColor: Colors.white,
+                  fillColor: Colors.blue[200],
+                  color: Colors.blue[400],
+                  isSelected: _selectedWeather,
+                  children: icons,
+                ),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

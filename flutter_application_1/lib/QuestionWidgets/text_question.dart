@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import '../Log/LogPage.dart';
-import '../Log/ProfileScreen.dart';
+import 'package:flutter_application_1/Log/log_page.dart';
+import 'package:flutter_application_1/Log/profile_screen.dart';
+import 'choose_theme.dart';
 
-import '../HomePage.dart';
-import '../EndOfQuizz.dart';
-
-class TextSlider extends StatefulWidget {
-  const TextSlider({super.key});
+class TextQuestion extends StatefulWidget {
+  const TextQuestion({super.key});
 
   @override
-  State<TextSlider> createState() => _TextSliderState();
+  State<TextQuestion> createState() => _TextQuestionState();
 }
 
-class _TextSliderState extends State<TextSlider> {
+class _TextQuestionState extends State<TextQuestion> {
   double _value = 20;
   @override
   Widget build(BuildContext context) {
@@ -37,10 +33,11 @@ class _TextSliderState extends State<TextSlider> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                        color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
+                  fillColor: const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -59,7 +56,7 @@ class _TextSliderState extends State<TextSlider> {
               )
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -69,7 +66,7 @@ class _TextSliderState extends State<TextSlider> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                  "Slider Question",
+                  "Text Question",
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
                     fontSize: 50.0,
@@ -78,16 +75,7 @@ class _TextSliderState extends State<TextSlider> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "How would you rate your",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                const Text(
-                  "experience out of 10",
+                  "What is your name ?",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25.0,
@@ -95,27 +83,22 @@ class _TextSliderState extends State<TextSlider> {
                   ),
                 ),
                 const SizedBox(height: 22.0),
-                Slider(
-                  min: 0.0,
-                  max: 100.0,
-                  value: _value,
-                  divisions: 10,
-                  label: '${_value.round()}',
-                  onChanged: (value) {
-                    setState(() {
-                      _value = value;
-                    });
-                  },
+                const TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter your name',
+                  ),
                 ),
                 const SizedBox(height: 12.0),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))), //
+                          color: const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(212, 111, 77, 1),
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -123,7 +106,7 @@ class _TextSliderState extends State<TextSlider> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const EndOfQuizz()));
+                          builder: (context) => const ChooseTheme()));
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(
@@ -137,10 +120,11 @@ class _TextSliderState extends State<TextSlider> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

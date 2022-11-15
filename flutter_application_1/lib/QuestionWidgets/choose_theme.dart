@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/QuestionWidgets/ImageQuestion.dart';
-import 'package:transparent_image/transparent_image.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import '../Log/LogPage.dart';
-import '../Log/ProfileScreen.dart';
-import '../QuestionWidgets/ChooseTheme.dart';
-
-import '../HomePage.dart';
-import 'TextSlider.dart';
-import 'TextQuestion.dart';
+import 'package:flutter_application_1/QuestionWidgets/image_question.dart';
+import '../Log/log_page.dart';
+import '../Log/profile_screen.dart';
 
 class ChooseTheme extends StatefulWidget {
   const ChooseTheme({super.key});
@@ -40,10 +32,11 @@ class _ChooseThemeState extends State<ChooseTheme> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                        color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
+                  fillColor: const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -62,7 +55,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
               )
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -155,10 +148,11 @@ class _ChooseThemeState extends State<ChooseTheme> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
