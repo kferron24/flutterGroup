@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/Log/LogPage.dart';
-import 'package:flutter_application_1/Log/ProfileScreen.dart';
-import 'package:flutter_application_1/QuestionWidgets/TextQuestion.dart';
-import 'package:flutter_application_1/QuestionWidgets/questionnary.dart';
+import '../Log/log_page.dart';
+import '../Log/profile_screen.dart';
+import '../end_of_quizz.dart';
 
-import 'HomePage.dart';
-import 'QuestionWidgets/TextSlider.dart';
-import 'QuestionWidgets/TextQuestion.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class TextSlider extends StatefulWidget {
+  const TextSlider({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TextSlider> createState() => _TextSliderState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TextSliderState extends State<TextSlider> {
+  double _value = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
+                        color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor:const Color.fromRGBO(0, 53, 63, 1),
+                  fillColor: const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -61,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ],
           ),
-          backgroundColor:const Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -71,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                  "Home Screen",
+                  "Slider Question",
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
                     fontSize: 50.0,
@@ -80,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "Do you want to test the",
+                  "How would you rate your",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25.0,
@@ -89,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "Quizz",
+                  "experience out of 10",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25.0,
@@ -97,39 +92,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 22.0),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color:const Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius:const BorderRadius.all(Radius.circular(20.0))), //
-                  child: RawMaterialButton(
-                    fillColor:const Color.fromRGBO(212, 111, 77, 1),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(17.0),
-                    ),
-                    onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const Questionnary()));
-                    },
-                    child: const Text("YES",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        )),
-                  ),
+                Slider(
+                  min: 0.0,
+                  max: 100.0,
+                  value: _value,
+                  divisions: 10,
+                  label: '${_value.round()}',
+                  onChanged: (value) {
+                    setState(() {
+                      _value = value;
+                    });
+                  },
                 ),
                 const SizedBox(height: 12.0),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color:const Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius:const BorderRadius.all(Radius.circular(20.0))), //
+                          color: const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0))), //
                   child: RawMaterialButton(
-                    fillColor:const Color.fromRGBO(212, 111, 77, 1),
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -137,9 +121,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const LogPage()));
+                          builder: (context) => const EndOfQuizz()));
                     },
-                    child: const Text("NO",
+                    child: const Text("SUBMIT",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,
@@ -151,10 +135,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor:const Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

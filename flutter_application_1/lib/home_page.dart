@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'Log/LogPage.dart';
+import 'Log/log_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

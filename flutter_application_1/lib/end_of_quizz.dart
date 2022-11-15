@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import '../Log/LogPage.dart';
-import '../Log/ProfileScreen.dart';
-import 'HomeScreen.dart';
-import 'HomePage.dart';
-import 'QuestionWidgets/TextSlider.dart';
-import 'QuestionWidgets/TextQuestion.dart';
+import 'Log/log_page.dart';
+import 'Log/profile_screen.dart';
+import 'home_screen.dart';
 
 class EndOfQuizz extends StatefulWidget {
   const EndOfQuizz({super.key});
@@ -38,10 +32,11 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                        color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
+                  fillColor: const Color.fromRGBO(0, 53, 63, 1),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -60,7 +55,7 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
               )
             ],
           ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -91,10 +86,11 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))), //
+                          color: const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(212, 111, 77, 1),
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -116,10 +112,11 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

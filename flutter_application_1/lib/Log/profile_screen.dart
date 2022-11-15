@@ -1,11 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/Log/LogPage.dart';
-
-import '../HomePage.dart';
-import '../HomeScreen.dart';
+import 'package:flutter_application_1/Log/log_page.dart';
+import '../home_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -32,10 +28,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 44,
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color:const Color.fromRGBO(67, 12, 5, 1), width: 3),
-                    borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
+                        color: const Color.fromRGBO(67, 12, 5, 1), width: 3),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(35.0))), //
                 child: RawMaterialButton(
-                  fillColor:const Color.fromARGB(0, 179, 120, 112),
+                  fillColor: const Color.fromARGB(0, 179, 120, 112),
                   elevation: 0.0,
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   shape: RoundedRectangleBorder(
@@ -54,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               )
             ],
           ),
-          backgroundColor:const Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -103,10 +100,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color:const Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius:const BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor:const Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

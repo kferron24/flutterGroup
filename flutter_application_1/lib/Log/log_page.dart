@@ -1,11 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/HomeScreen.dart';
-import '../QuestionWidgets/MultipleChoiceQuestion.dart';
-import '../QuestionWidgets/DichotomicQuestion.dart';
-import '../HomePage.dart';
-import '../HomeScreen.dart';
-import 'ProfileScreen.dart';
+import 'package:flutter_application_1/home_screen.dart';
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
@@ -56,7 +51,7 @@ class _LogPageState extends State<LogPage> {
               ),
             ],
           ),
-          backgroundColor:const Color.fromRGBO(212, 111, 77, 1),
+          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -134,7 +129,7 @@ class _LogPageState extends State<LogPage> {
                 Container(
                   width: double.infinity,
                   child: RawMaterialButton(
-                    fillColor:const Color.fromRGBO(212, 111, 77, 1),
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -162,7 +157,7 @@ class _LogPageState extends State<LogPage> {
                 Container(
                   width: double.infinity,
                   child: RawMaterialButton(
-                    fillColor:const Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
