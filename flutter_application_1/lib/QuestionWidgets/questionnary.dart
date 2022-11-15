@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import 'dart:convert';
 import 'package:flutter/services.dart';
+
 import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
-import '../QuestionClasses/Question.dart';
+import '../QuestionClasses/question.dart';
+
 
 Future<List<Question>> readJsonFile(String filePath) async {
   final String response = await rootBundle.loadString('assets/questions.json');
@@ -44,33 +48,35 @@ Future<List<Question>> readJsonFile(String filePath) async {
   return list;
 }
 
-class Questionnary extends StatefulWidget {
-  const Questionnary({super.key});
+class Questionary extends StatefulWidget {
+  const Questionary({super.key});
 
   @override
-  State<Questionnary> createState() => _QuestionnaryState();
+  State<Questionary> createState() => _QuestionaryState();
 }
 
-class _QuestionnaryState extends State<Questionnary> {
+class _QuestionaryState extends State<Questionary> {
   //Méthode initState
   final List<Question> questions = [];
 
+  
   @override
-  void initState() {
+  void initState(){
     super.initState();
-    readJsonFile('assets/questions.json').then((value) => setState(() {
-          questions.addAll(value);
-        }));
+    readJsonFile('assets/questions.json').then((value) =>  
+      setState(() {
+        questions.addAll(value);
+    }));
   }
+
 
   //Méthode FutureBuilder
   //final Future<List<Question>> questions = readJsonFile('assets/questions.json');
 
+
   @override
   Widget build(BuildContext context) {
-    //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) => Column(children: questions.map((question) => question.createWidget()).toList())));
-    return Column(
-        children:
-            questions.map((question) => question.createWidget()).toList());
+    //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
+    return questions.isEmpty? const Text("Loading...") : questions[0].createWidget(questions);
   }
 }

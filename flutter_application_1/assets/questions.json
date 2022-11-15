@@ -2,15 +2,29 @@
     "questions":[
         {
             "type":"DICHOTOMIC",
-            "id":1,
+            "id":0,
             "text": "Are you french?",
+            "options":["Yes","No"],
+            "next":[2,0]
+        },
+        {
+            "type":"DICHOTOMIC",
+            "id":1,
+            "text": "How are you?",
+            "options":["Fine","Bad"],
+            "next":[0,-1]
+        },
+        {
+            "type":"DICHOTOMIC",
+            "id":2,
+            "text": "SALUTTTTTTTTTTTTT?",
             "options":["Yes","No"],
             "next":[3,0]
         },
         {
             "type":"DICHOTOMIC",
-            "id":2,
-            "text": "How are you?",
+            "id":3,
+            "text": "HELLOOOOOOOOOO",
             "options":["Yes","No"],
             "next":[1,0]
         }

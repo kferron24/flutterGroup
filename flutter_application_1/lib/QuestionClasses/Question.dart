@@ -4,5 +4,5 @@ abstract class Question {
   String? text;
   int? id;
 
-  StatefulWidget createWidget();
+  StatefulWidget createWidget(List<Question> questions);
 }
