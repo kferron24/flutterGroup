@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
 import 'package:flutter_application_1/Log/profile_screen.dart';
+import './QuestionWidgets/text_question.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -106,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const Questionnary()));
+                          builder: (context) => const TextQuestion()));
                     },
                     child: const Text("YES",
                         style: TextStyle(
