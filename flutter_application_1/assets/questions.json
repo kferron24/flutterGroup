@@ -1,0 +1,18 @@
+{
+    "questions":[
+        {
+            "type":"DICHOTOMIC",
+            "id":1,
+            "text": "Are you french?",
+            "options":["Yes","No"],
+            "next":[3,0]
+        },
+        {
+            "type":"DICHOTOMIC",
+            "id":2,
+            "text": "How are you?",
+            "options":["Yes","No"],
+            "next":[1,0]
+        }
+    ]
+}
