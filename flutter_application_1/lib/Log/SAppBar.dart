@@ -22,15 +22,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(
-            width: 10,
-          ),
           const Text(
             'QUIZZ',
             style: TextStyle(color: Color.fromRGBO(67, 12, 5, 1)),
-          ),
-          const SizedBox(
-            width: 215,
           ),
           Container(
             decoration: BoxDecoration(
