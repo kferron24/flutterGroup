@@ -33,30 +33,14 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustomAppBar(),
-        body: Padding(
-            padding: const EdgeInsets.all(30.0),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: SingleChildScrollView(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  "Dichotomic",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 161, 172),
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                const Text(
-                  "this is the",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 const SizedBox(height: 20.0),
                 Text(
                   widget.question!,
@@ -161,74 +145,6 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                   ),
                 )
               ],
-            ))));
+            )))));
   }
 }
-
-
-// Material(
-//         child: Container(
-//       margin: const EdgeInsets.all(15.0),
-//       padding: const EdgeInsets.all(3.0),
-//       child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             Text(
-//               widget.question!,
-//               style: const TextStyle(
-//                 fontSize: 20,
-//               ),
-//             ),
-//             ...widget.options!
-//                 .map((option) => [
-//                       RadioListTile<String>(
-//                         value: option,
-//                         groupValue: answer,
-//                         title: Text(option),
-//                         onChanged: (v) => setState(() {
-//                           answer = v!;
-//                           optionsIdx = widget.options!.indexOf(option);
-//                         }),
-//                       )
-//                     ])
-//                 .expand((w) => w)
-//                 .toList(),
-//             TextButton(
-//               style: TextButton.styleFrom(
-//                 backgroundColor: Colors.blueAccent,
-//                 textStyle: const TextStyle(fontSize: 15),
-//                 foregroundColor: Colors.white,
-//                 padding: const EdgeInsets.all(10.0),
-//               ),
-//               onPressed: () async {
-//                 switch (widget.next![optionsIdx]) {
-//                   case -1:
-//                     {
-//                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-//                           builder: (context) => widget.listQuestions!.last
-//                               .createWidget(widget.listQuestions!)));
-//                     }
-//                     break;
-//                   case 0:
-//                     {
-//                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-//                           builder: (context) => widget
-//                               .listQuestions![widget.questionID! + 1]
-//                               .createWidget(widget.listQuestions!)));
-//                     }
-//                     break;
-//                   default:
-//                     {
-//                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-//                           builder: (context) => widget
-//                               .listQuestions![widget.next![optionsIdx]]
-//                               .createWidget(widget.listQuestions!)));
-//                     }
-//                     break;
-//                 }
-//               },
-//               child: const Text('Submit'),
-//             ),
-//           ]),
-//     ));

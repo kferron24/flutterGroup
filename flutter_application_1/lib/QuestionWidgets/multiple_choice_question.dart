@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Log/SAppBar.dart';
+
 class MultipleChoiceQuestion extends StatefulWidget {
   final String? question;
   final int questionID;
@@ -21,10 +23,13 @@ class MultipleChoiceQuestion extends StatefulWidget {
 }
 
 class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
+  
   @override
   Widget build(BuildContext context) {
-    Map<String,bool> mapAnswers = {for (var item in widget.options) item : false};
-    return Center(
+    Map<String,bool> mapAnswers = {for (var item in widget.options) item : true};
+    return Scaffold(
+        appBar: const CustomAppBar(),
+        body: Center(
           child: Column(children: [
           Container(
             padding: const EdgeInsets.all(16.0),
@@ -54,6 +59,6 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                       .toList(),
                 ),
               )),
-        ]));
+        ])));
   }
 }
