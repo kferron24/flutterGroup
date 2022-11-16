@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/Log/LogPage.dart';
-import 'package:flutter_application_1/Log/ProfileScreen.dart';
+import 'package:flutter_application_1/Log/log_page.dart';
+import 'package:flutter_application_1/ProfileScreen.dart';
 import 'package:flutter_application_1/QuestionWidgets/TextQuestion.dart';
 
-import 'HomePage.dart';
+import 'homepage.dart';
 import 'QuestionWidgets/TextSlider.dart';
 import 'QuestionWidgets/TextQuestion.dart';
 

@@ -3,11 +3,11 @@ import 'package:flutter_application_1/QuestionWidgets/ImageQuestion.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import '../Log/LogPage.dart';
-import '../Log/ProfileScreen.dart';
+import '../Log/log_page.dart';
+import '../ProfileScreen.dart';
 import '../QuestionWidgets/ChooseTheme.dart';
 
-import '../HomePage.dart';
+import '../homepage.dart';
 import 'TextSlider.dart';
 import 'TextQuestion.dart';
 

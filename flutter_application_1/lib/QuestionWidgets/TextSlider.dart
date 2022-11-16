@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import '../Log/LogPage.dart';
-import '../Log/ProfileScreen.dart';
+import '../Log/log_page.dart';
+import '../ProfileScreen.dart';
 
-import '../HomePage.dart';
+import '../homepage.dart';
 import '../EndOfQuizz.dart';
 
 class TextSlider extends StatefulWidget {
