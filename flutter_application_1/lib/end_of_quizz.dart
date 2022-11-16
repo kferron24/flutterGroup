@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/SAppBar.dart';
+import 'package:flutter_application_1/Log/appbar.dart';
 import 'Log/log_page.dart';
-import 'Log/profile_screen.dart';
 import 'home_screen.dart';
 
 class EndOfQuizz extends StatefulWidget {
