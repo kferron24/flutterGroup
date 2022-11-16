@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 
+import '../Log/SAppBar.dart';
 import '../Log/log_page.dart';
 import '../Log/profile_screen.dart';
 
@@ -38,48 +39,7 @@ class _RankedQuestion extends State<RankedQuestion> {
     // ignore: no_leading_underscores_for_local_identifiers
 
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Quiz',
-                style: TextStyle(
-                  color: Color.fromRGBO(67, 12, 5, 1),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: const Color.fromARGB(0, 255, 0, 0), width: 3),
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(35.0))), //
-                child: RawMaterialButton(
-                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const ProfileScreen()));
-                    },
-                    child: const Text.rich(
-                      TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: ' Profile ',
-                              style: TextStyle(fontStyle: FontStyle.italic)),
-                        ],
-                      ),
-                    )),
-              )
-            ],
-          ),
-          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
-        ),
+        appBar: const CustomAppBar(),
         body: Padding(
             padding: const EdgeInsets.all(40.0),
             child: SingleChildScrollView(
