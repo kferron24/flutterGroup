@@ -1,18 +1,19 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/log_page.dart';
+import '../Log/appbar.dart';
+import '../Log/log_page.dart';
+import '../end_of_quizz.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class TextSlider extends StatefulWidget {
+  const TextSlider({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<TextSlider> createState() => _TextSliderState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _TextSliderState extends State<TextSlider> {
+  double _value = 20;
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
         appBar: const CustomAppBar(),
         body: Padding(
@@ -23,7 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                  "Profile Screen",
+                  "Slider Question",
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
                     fontSize: 50.0,
@@ -32,32 +33,62 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "Your Email:",
+                  "How would you rate your",
                   style: TextStyle(
-                    color: Color.fromRGBO(67, 12, 5, 1),
+                    color: Colors.black,
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 20.0),
-                Text(
-                  user.email!,
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 30.0),
+                const SizedBox(height: 15.0),
                 const Text(
-                  "YOUR ANWERS:",
+                  "experience out of 10",
                   style: TextStyle(
-                    color: Color.fromRGBO(67, 12, 5, 1),
+                    color: Colors.black,
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 100.0),
+                const SizedBox(height: 22.0),
+                Slider(
+                  min: 0.0,
+                  max: 100.0,
+                  value: _value,
+                  divisions: 10,
+                  label: '${_value.round()}',
+                  onChanged: (value) {
+                    setState(() {
+                      _value = value;
+                    });
+                  },
+                ),
+                const SizedBox(height: 12.0),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0))), //
+                  child: RawMaterialButton(
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                    elevation: 0.0,
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(17.0),
+                    ),
+                    onPressed: () async {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const EndOfQuizz()));
+                    },
+                    child: const Text("SUBMIT",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        )),
+                  ),
+                ),
+                const SizedBox(height: 50.0),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(

@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_application_1/Log/appbar.dart';
 import 'Log/log_page.dart';
-import 'ProfileScreen.dart';
-import 'HomeScreen.dart';
-import 'homepage.dart';
-import 'QuestionWidgets/TextSlider.dart';
-import 'QuestionWidgets/TextQuestion.dart';
+import 'home_screen.dart';
 
 class EndOfQuizz extends StatefulWidget {
   const EndOfQuizz({super.key});
@@ -20,48 +14,7 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(
-                width: 10,
-              ),
-              const Text(
-                'QUIZZ',
-                style: TextStyle(color: Color.fromRGBO(67, 12, 5, 1)),
-              ),
-              const SizedBox(
-                width: 215,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius: BorderRadius.all(Radius.circular(35.0))), //
-                child: RawMaterialButton(
-                  fillColor: Color.fromRGBO(0, 53, 63, 1),
-                  elevation: 0.0,
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32.0),
-                  ),
-                  onPressed: () async {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const ProfileScreen()));
-                  },
-                  child: const Text("Profile",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      )),
-                ),
-              )
-            ],
-          ),
-          backgroundColor: Color.fromRGBO(212, 111, 77, 1),
-        ),
+        appBar: const CustomAppBar(),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(
@@ -91,10 +44,11 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(0, 53, 63, 1), width: 2),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))), //
+                          color: const Color.fromRGBO(0, 53, 63, 1), width: 2),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(212, 111, 77, 1),
+                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
@@ -116,10 +70,11 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(35.0))), //
+                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(

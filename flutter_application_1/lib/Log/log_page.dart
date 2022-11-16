@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/LogWidget/log_input.dart';
-import 'package:flutter_application_1/Log/LogWidget/log_welcome.dart';
+import 'package:flutter_application_1/home_screen.dart';
 
 import 'LogWidget/log_buttons.dart';
+import 'LogWidget/log_input.dart';
+import 'LogWidget/log_welcome.dart';
+import 'appbar.dart';
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
@@ -12,29 +15,32 @@ class LogPage extends StatefulWidget {
 }
 
 class _LogPageState extends State<LogPage> {
+  //Login function
+  static Future<User?> loginUsingEmailPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No user found for that email.");
+      }
+    }
+
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                'QUIZZ',
-                style: TextStyle(
-                  color: Color.fromRGBO(67, 12, 5, 1),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
-        ),
+        appBar: const CustomAppBar(),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

@@ -1,0 +1,32 @@
+{
+    "questions":[
+        {
+            "type":"DICHOTOMIC",
+            "id":0,
+            "text": "question 0",
+            "options":["Yes","No"],
+            "next":[2,0]
+        },
+        {
+            "type":"DICHOTOMIC",
+            "id":1,
+            "text": "Question 1",
+            "options":["Fine","Bad"],
+            "next":[0,-1]
+        },
+        {
+            "type":"DICHOTOMIC",
+            "id":2,
+            "text": "Question 2",
+            "options":["Yes","No"],
+            "next":[3,0]
+        },
+        {
+            "type":"DICHOTOMIC",
+            "id":3,
+            "text": "Question 3",
+            "options":["Yes","No"],
+            "next":[1,0]
+        }
+    ]
+}

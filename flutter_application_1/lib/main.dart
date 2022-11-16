@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+<<<<<<< HEAD
 
 import 'homepage.dart';
+=======
+import 'home_page.dart';
+>>>>>>> ccd8c6b65e87efcaa6f110723bc784a95097acf0
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

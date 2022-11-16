@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../HomeScreen.dart';
+import '../../home_screen.dart';
 import '../firebase_log.dart';
 
 class LogButtons extends StatelessWidget {
@@ -45,6 +45,7 @@ class LogButtons extends StatelessWidget {
                   password: passwordController.text,
                   context: context);
               if (response.isNotEmpty) {
+                // ignore: use_build_context_synchronously
                 getSnackBar(context, response);
                 return;
               }
@@ -75,6 +76,7 @@ class LogButtons extends StatelessWidget {
                   password: passwordController.text.trim(),
                   context: context);
               if (response.isNotEmpty) {
+                // ignore: use_build_context_synchronously
                 getSnackBar(context, response);
                 return;
               }
@@ -87,9 +89,11 @@ class LogButtons extends StatelessWidget {
                   password: passwordController.text,
                   context: context);
               if (response.isNotEmpty) {
+                // ignore: use_build_context_synchronously
                 getSnackBar(context, response);
                 return;
               }
+              // ignore: use_build_context_synchronously
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
