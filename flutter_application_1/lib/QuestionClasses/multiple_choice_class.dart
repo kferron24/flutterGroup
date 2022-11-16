@@ -23,7 +23,7 @@ class MultipleChoiceClass extends Question {
   @override
   StatefulWidget createWidget(List<Question> questions) {
     return MultipleChoiceQuestion(
-        question: text, questionID: id!, options: _options!, next: _next!);
+        question: text, questionID: id!, options: _options!, next: _next!, listQuestions: questions,);
   }
 
   @override
