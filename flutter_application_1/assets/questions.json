@@ -1,11 +1,11 @@
 {
     "questions":[
         {
-            "type":"DICHOTOMIC",
+            "type":"STARRATING",
             "id":0,
-            "text": "question 0",
-            "options":["Yes","No"],
-            "next":[2,0]
+            "text": "Notez ce quizz",
+            "range":[1,2,5],
+            "next":2
         },
         {
             "type":"DICHOTOMIC",
@@ -17,8 +17,8 @@
         {
             "type":"DICHOTOMIC",
             "id":2,
-            "text": "Question 2",
-            "options":["Yes","No"],
+            "text": "What is the capital of France ?",
+            "options":["Paris","New York"],
             "next":[3,0]
         },
         {

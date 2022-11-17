@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 
 import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
@@ -41,6 +42,18 @@ Future<List<Question>> readJsonFile(String filePath) async {
           var multip = MultipleChoiceClass(
               question['text'], question['id'], options, question['next']);
           list.add(multip);
+        }
+        break;
+        case "STARRATING":
+        {
+          List<int> range = [];
+          for (int option in question['range']) {
+            range.add(option);
+          }
+          int next = question['next'];
+          var dicho =
+              StarRatingClass(question['text'], question['id'], range, next);
+          list.add(dicho);
         }
         break;
     }

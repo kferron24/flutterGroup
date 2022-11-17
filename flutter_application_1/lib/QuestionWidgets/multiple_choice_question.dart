@@ -85,7 +85,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                         borderRadius: BorderRadius.circular(17.0),
                       ),
                       onPressed: () async {
-                        switch (widget.next!) {
+                        switch (widget.next) {
                           case -1:
                             {
                               Navigator.of(context).pushReplacement(
@@ -102,7 +102,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                                   MaterialPageRoute(
                                       builder: (context) => widget
                                           .listQuestions![
-                                              widget.questionID! + 1]
+                                              widget.questionID + 1]
                                           .createWidget(
                                               widget.listQuestions!)));
                             }
@@ -112,7 +112,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (context) => widget
-                                          .listQuestions![widget.next!]
+                                          .listQuestions![widget.next]
                                           .createWidget(
                                               widget.listQuestions!)));
                             }
