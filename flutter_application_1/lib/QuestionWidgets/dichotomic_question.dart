@@ -3,7 +3,7 @@ import '../Log/appbar.dart';
 import '../QuestionClasses/question.dart';
 import '../Log/profile_screen.dart';
 import '../Log/log_page.dart';
-import '../QuestionWidgets/questionnary.dart';
+import 'questionary.dart';
 
 class DichotomicQuestion extends StatefulWidget {
   final String? question;
