@@ -41,7 +41,7 @@ class _LogPageState extends State<LogPage> {
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
         appBar: CustomAppBar(
-          type: 'Profile',
+          type: 'Notloged',
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
