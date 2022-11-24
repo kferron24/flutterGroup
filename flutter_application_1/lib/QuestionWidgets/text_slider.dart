@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/appbar.dart';
 import '../Log/log_page.dart';
+import '../components/appbar.dart';
 import '../end_of_quizz.dart';
 
 class TextSlider extends StatefulWidget {
@@ -15,7 +15,7 @@ class _TextSliderState extends State<TextSlider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

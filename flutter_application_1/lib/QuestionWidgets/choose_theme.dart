@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Log/log_page.dart';
-
-import 'package:flutter_application_1/components/appbar.dart';
-import 'package:flutter_application_1/QuestionWidgets/image_question.dart';
+import '../components/appbar.dart';
 
 class ChooseTheme extends StatefulWidget {
   const ChooseTheme({super.key});
@@ -16,7 +14,9 @@ class _ChooseThemeState extends State<ChooseTheme> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(
+          type: 'Profile',
+        ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(
@@ -61,7 +61,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const ImageQuestion()));
+                                  builder: (context) => const LogPage()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(

@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(type: "Login"),
         body: Container(
             margin: const EdgeInsets.all(32),
             child: SingleChildScrollView(

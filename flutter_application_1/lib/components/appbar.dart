@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/logout_button.dart';
 import 'package:flutter_application_1/components/profile_button.dart';
 
-import '../Log/log_page.dart';
-import '../Profile/profile_screen.dart';
-
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key})
+  final String? type;
+  const CustomAppBar({Key? key, required this.type})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -35,9 +33,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
           ),
           Row(
-            children: const [
-              ProfileButton(),
-              LogOutButton(),
+            children: [
+              ProfileButton(type: widget.type),
+              LogOutButton(type: widget.type),
             ],
           )
         ],

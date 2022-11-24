@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/appbar.dart';
 import '../Log/log_page.dart';
 import '../Profile/profile_screen.dart';
+import '../components/appbar.dart';
 
 class TextSlider extends StatefulWidget {
   const TextSlider({super.key});
@@ -17,7 +17,7 @@ class _TextSliderState extends State<TextSlider> {
     // ignore: no_leading_underscores_for_local_identifiers
 
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../components/appbar.dart';
 import 'LogWidget/log_buttons.dart';
 import 'LogWidget/log_input.dart';
 import 'LogWidget/log_welcome.dart';
-import '../components/appbar.dart';
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
@@ -18,7 +18,9 @@ class _LogPageState extends State<LogPage> {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(
+          type: 'Notloged',
+        ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
-import 'package:flutter_application_1/QuestionWidgets/questionnary.dart';
+
+import 'package:flutter_application_1/QuestionWidgets/questionary.dart';
 
 import 'components/appbar.dart';
 
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

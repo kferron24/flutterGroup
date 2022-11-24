@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/snackbar.dart';
 
 import '../Log/log_page.dart';
 
 class LogOutButton extends StatelessWidget {
-  const LogOutButton({super.key});
+  final String? type;
+
+  const LogOutButton({super.key, this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +20,18 @@ class LogOutButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(32.0),
         ),
         onPressed: () async {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const LogPage()));
+          switch (type) {
+            case "Notloged":
+              {
+                getSnackBar(
+                    context, 'Connectez vous pour pouvoir vous déconnecter');
+              }
+              break;
+            default:
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const LogPage()));
+              break;
+          }
         },
         child: const Icon(
           Icons.logout,

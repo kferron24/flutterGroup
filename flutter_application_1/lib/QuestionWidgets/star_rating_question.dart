@@ -1,31 +1,37 @@
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
-import '../QuestionClasses/question.dart';
+
 import '../Log/log_page.dart';
+import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 
-class DichotomicQuestion extends StatefulWidget {
+class StarRatingQuestion extends StatefulWidget {
   final String? question;
-  final int? questionID;
-  final List<String>? options;
-  final List<int>? next;
+  final int questionID;
+  final List<int> range;
+  final int next;
   final List<Question>? listQuestions;
 
-  const DichotomicQuestion({
-    super.key,
-    required this.question,
-    required this.questionID,
-    required this.options,
-    required this.next,
-    required this.listQuestions,
-  });
+  const StarRatingQuestion(
+      {super.key,
+      this.question,
+      required this.questionID,
+      required this.range,
+      required this.next,
+      this.listQuestions});
 
   @override
-  State<DichotomicQuestion> createState() => _DichotomicQuestionState();
+  State<StarRatingQuestion> createState() => _StarRatingQuestionState();
 }
 
-class _DichotomicQuestionState extends State<DichotomicQuestion> {
-  var answer = "";
-  late int optionsIdx;
+class _StarRatingQuestionState extends State<StarRatingQuestion> {
+  late int rating;
+
+  @override
+  void initState() {
+    super.initState();
+    rating = widget.range[1];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +55,19 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       ),
                     ),
                     const SizedBox(height: 22.0),
-                    ...widget.options!
-                        .map((option) => [
-                              RadioListTile<String>(
-                                value: option,
-                                groupValue: answer,
-                                title: Text(option),
-                                onChanged: (v) => setState(() {
-                                  answer = v!;
-                                  optionsIdx = widget.options!.indexOf(option);
-                                }),
-                              )
-                            ])
-                        .expand((w) => w)
-                        .toList(),
+                    RatingBar.builder(
+                      initialRating: widget.range[1].toDouble(),
+                      minRating: widget.range[0].toDouble(),
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: widget.range[2],
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.blue,
+                      ),
+                      onRatingUpdate: (rating) {},
+                    ),
                     const SizedBox(height: 22.0),
                     Container(
                       width: double.infinity,
@@ -80,7 +85,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          switch (widget.next![optionsIdx]) {
+                          switch (widget.next) {
                             case -1:
                               {
                                 Navigator.of(context).pushReplacement(
@@ -97,7 +102,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                     MaterialPageRoute(
                                         builder: (context) => widget
                                             .listQuestions![
-                                                widget.questionID! + 1]
+                                                widget.questionID + 1]
                                             .createWidget(
                                                 widget.listQuestions!)));
                               }
@@ -107,8 +112,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) => widget
-                                            .listQuestions![
-                                                widget.next![optionsIdx]]
+                                            .listQuestions![widget.next]
                                             .createWidget(
                                                 widget.listQuestions!)));
                               }
