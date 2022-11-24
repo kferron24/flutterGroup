@@ -17,7 +17,7 @@ class _TextSliderState extends State<TextSlider> {
     // ignore: no_leading_underscores_for_local_identifiers
 
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

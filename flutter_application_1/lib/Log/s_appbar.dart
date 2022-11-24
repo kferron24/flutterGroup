@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/profile_screen.dart';
+import 'package:flutter_application_1/homepage.dart';
 
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key})
+class CustomProfilAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const CustomProfilAppBar(String s, {Key? key})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -14,7 +14,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   _CustomAppBarState createState() => _CustomAppBarState();
 }
 
-class _CustomAppBarState extends State<CustomAppBar> {
+class _CustomAppBarState extends State<CustomProfilAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -39,8 +39,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 borderRadius: BorderRadius.circular(32.0),
               ),
               onPressed: () async {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const ProfileScreen()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: const Text("Profile",
                   style: TextStyle(

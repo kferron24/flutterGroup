@@ -15,7 +15,7 @@ class _TextSliderState extends State<TextSlider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

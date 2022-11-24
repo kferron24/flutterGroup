@@ -40,7 +40,9 @@ class _LogPageState extends State<LogPage> {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(
+          type: 'Profile',
+        ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

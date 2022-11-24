@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_application_1/Log/profile_screen.dart';
+import 'package:flutter_application_1/home_screen.dart';
+import 'package:flutter_application_1/homepage.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key})
+  String? type;
+  CustomAppBar({Key? key, required this.type})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -17,6 +21,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
+    double widthog = MediaQuery.of(context).size.width;
     return AppBar(
       centerTitle: true,
       title: Row(
@@ -30,7 +35,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             style: TextStyle(color: Color.fromRGBO(67, 12, 5, 1)),
           ),
           const SizedBox(
-            width: 215,
+            width: 200,
           ),
           Container(
             decoration: BoxDecoration(
@@ -45,8 +50,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 borderRadius: BorderRadius.circular(32.0),
               ),
               onPressed: () async {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const ProfileScreen()));
+                switch (widget.type) {
+                  case "Profile":
+                    {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
+                    }
+                    break;
+                  case "Login":
+                    {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
+                    }
+                }
               },
               child: const Text("Profile",
                   style: TextStyle(

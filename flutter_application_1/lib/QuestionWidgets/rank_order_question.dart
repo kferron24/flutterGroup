@@ -39,7 +39,7 @@ class _RankedQuestion extends State<RankedQuestion> {
     // ignore: no_leading_underscores_for_local_identifiers
 
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(40.0),
             child: SingleChildScrollView(

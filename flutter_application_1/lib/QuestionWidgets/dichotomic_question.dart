@@ -32,7 +32,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(type: 'Profile'),
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
