@@ -15,7 +15,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(
+          type: 'Login',
+        ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

@@ -1,7 +1,7 @@
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../Log/SAppBar.dart';
+import '../Log/appbar.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 
@@ -35,15 +35,14 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
     options = widget.options!;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(type: 'Profile'),
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

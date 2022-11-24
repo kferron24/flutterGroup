@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../Log/SAppBar.dart';
+import '../Log/appbar.dart';
+import '../Log/s_appbar.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 
@@ -36,7 +37,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(type: 'Profile'),
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -101,8 +102,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (context) => widget
-                                          .listQuestions![
-                                              widget.questionID + 1]
+                                          .listQuestions![widget.questionID + 1]
                                           .createWidget(
                                               widget.listQuestions!)));
                             }
