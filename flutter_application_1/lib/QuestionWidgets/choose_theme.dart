@@ -101,7 +101,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const ImageQuestion()));
+                                  builder: (context) => const LogPage()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(

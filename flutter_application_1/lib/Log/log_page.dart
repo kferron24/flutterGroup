@@ -69,7 +69,7 @@ class _LogPageState extends State<LogPage> {
                   ),
                 ),
                 const Text(
-                  "QUIZZ",
+                  "WE MEET",
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
                     fontSize: 50.0,

@@ -2,16 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
 import 'package:flutter_application_1/Log/profile_screen.dart';
 import 'choose_theme.dart';
+import '../QuestionClasses/question.dart';
 
 class TextQuestion extends StatefulWidget {
-  const TextQuestion({super.key});
+  final String? question;
+  final int? questionID;
+  final int? next;
+  final List<Question>? listQuestions;
+
+  const TextQuestion({
+    super.key,
+    required this.question,
+    required this.questionID,
+    required this.next,
+    required this.listQuestions,
+  });
 
   @override
   State<TextQuestion> createState() => _TextQuestionState();
 }
 
 class _TextQuestionState extends State<TextQuestion> {
-  double _value = 20;
+  String _answer = '';
+
+  void _updateText(val) {
+    setState(() {
+      _answer = val;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,9 +84,9 @@ class _TextQuestionState extends State<TextQuestion> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  "Text Question",
-                  style: TextStyle(
+                Text(
+                  widget.question!,
+                  style: const TextStyle(
                     color: Color.fromARGB(255, 0, 161, 172),
                     fontSize: 50.0,
                     fontWeight: FontWeight.bold,
@@ -75,7 +94,7 @@ class _TextQuestionState extends State<TextQuestion> {
                 ),
                 const SizedBox(height: 15.0),
                 const Text(
-                  "What is your name ?",
+                  "What is your name?",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25.0,
@@ -83,12 +102,16 @@ class _TextQuestionState extends State<TextQuestion> {
                   ),
                 ),
                 const SizedBox(height: 22.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextFormField(
+                  onChanged: (val) {
+                    _updateText(val);
+                  },
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter your name',
                   ),
                 ),
+                Text(_answer),
                 const SizedBox(height: 12.0),
                 Container(
                   width: double.infinity,
@@ -106,7 +129,9 @@ class _TextQuestionState extends State<TextQuestion> {
                     ),
                     onPressed: () async {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const ChooseTheme()));
+                          builder: (context) => widget
+                              .listQuestions![widget.next!]
+                              .createWidget(widget.listQuestions!)));
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(
