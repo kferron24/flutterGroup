@@ -1,5 +1,6 @@
 import '../QuestionWidgets/dichotomic_question.dart';
 import 'question.dart';
+
 import 'package:flutter/material.dart';
 
 class DichotomicClass extends Question {

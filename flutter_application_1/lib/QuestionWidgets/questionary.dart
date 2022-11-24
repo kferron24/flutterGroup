@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/QuestionClasses/drag_n_drop_list_class.dart';
+import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 
 import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
@@ -62,6 +64,29 @@ Future<List<Question>> readJsonFile(String filePath) async {
             options.add(option);
           }
           var multip = MultipleChoiceClass(
+              question['text'], question['id'], options, question['next']);
+          list.add(multip);
+        }
+        break;
+      case "STAR_RATING":
+        {
+          List<int> range = [];
+          for (int option in question['range']) {
+            range.add(option);
+          }
+          int next = question['next'];
+          var dicho =
+              StarRatingClass(question['text'], question['id'], range, next);
+          list.add(dicho);
+        }
+        break;
+      case "DRAG_N_DROP_LIST":
+        {
+          List<String> options = [];
+          for (String option in question['options']) {
+            options.add(option);
+          }
+          var multip = DragNDropListClass(
               question['text'], question['id'], options, question['next']);
           list.add(multip);
         }

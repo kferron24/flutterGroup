@@ -1,12 +1,14 @@
+import 'package:flutter_application_1/QuestionWidgets/drag_n_drop_list_question.dart';
+
 import '../QuestionWidgets/multiple_choice_question.dart';
 import 'question.dart';
 import 'package:flutter/material.dart';
 
-class MultipleChoiceClass extends Question {
+class DragNDropListClass extends Question {
   List<String>? _options;
   int? _next;
 
-  MultipleChoiceClass(String txt, int identifiant, List<String>? options, int next) {
+  DragNDropListClass(String txt, int identifiant, List<String>? options, int next) {
     text=txt;
     id=identifiant;
     _options = options;
@@ -16,13 +18,13 @@ class MultipleChoiceClass extends Question {
   //  DichotomicClass(this.text,this.id,this._options,this._next);
 
   
-  factory MultipleChoiceClass.fromJson(dynamic json) {
-    return MultipleChoiceClass(json['text'] as String, json['id'] as int, json['options'] as List<String>, json['next'] as int );
+  factory DragNDropListClass.fromJson(dynamic json) {
+    return DragNDropListClass(json['text'] as String, json['id'] as int, json['options'] as List<String>, json['next'] as int );
   }
 
   @override
   StatefulWidget createWidget(List<Question> questions) {
-    return MultipleChoiceQuestion(
+    return DragNDropListQuestion(
         question: text, questionID: id!, options: _options!, next: _next!, listQuestions: questions,);
   }
 

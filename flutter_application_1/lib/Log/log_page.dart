@@ -2,6 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home_screen.dart';
 
+import 'LogWidget/log_buttons.dart';
+import 'LogWidget/log_input.dart';
+import 'LogWidget/log_welcome.dart';
+import 'appbar.dart';
+
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
 
@@ -32,27 +37,10 @@ class _LogPageState extends State<LogPage> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                'QUIZZ',
-                style: TextStyle(
-                  color: Color.fromRGBO(67, 12, 5, 1),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
-        ),
+        appBar: const CustomAppBar(),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(
@@ -60,135 +48,13 @@ class _LogPageState extends State<LogPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  "WELCOME TO",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 161, 172),
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                  "WE MEET",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 161, 172),
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                const Text(
-                  "Login to the app",
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 53, 63, 1),
-                    fontSize: 38.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                TextField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    hintText: "User Email",
-                    prefixIcon: Icon(
-                      Icons.mail,
-                      color: Color.fromRGBO(67, 12, 5, 1),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 26.0,
-                ),
-                TextField(
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                  ),
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    hintText: "User Password",
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: Color.fromRGBO(67, 12, 5, 1),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                const Text(
-                  "Don't remember your password",
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 53, 63, 1),
-                  ),
-                ),
-                const SizedBox(height: 40.0),
-                Container(
-                  width: double.infinity,
-                  child: RawMaterialButton(
-                    fillColor: const Color.fromRGBO(212, 111, 77, 1),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    onPressed: () async {
-                      User? user = await loginUsingEmailPassword(
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                          context: context);
-                      print(user);
-                      if (user != null) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
-                      }
-                    },
-                    child: const Text("Login",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0,
-                        )),
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                Container(
-                  width: double.infinity,
-                  child: RawMaterialButton(
-                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    onPressed: () async {
-                      try {
-                        await FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                                email: _emailController.text.trim(),
-                                password: _passwordController.text.trim());
-                      } on FirebaseAuthException catch (e) {
-                        print(e);
-                      }
-                      User? user = await loginUsingEmailPassword(
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                          context: context);
-                      print(user);
-                      if (user != null) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
-                      }
-                    },
-                    child: const Text("Sign Up",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        )),
-                  ),
-                )
+                const LogWelcome(),
+                LogInputs(
+                    emailController: emailController,
+                    passwordController: passwordController),
+                LogButtons(
+                    emailController: emailController,
+                    passwordController: passwordController)
               ],
             ))));
   }

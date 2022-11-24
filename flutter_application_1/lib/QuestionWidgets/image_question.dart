@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Log/log_page.dart';
-import '../Log/profile_screen.dart';
+
+import '../Log/appbar.dart';
 import 'text_slider.dart';
 import '../QuestionClasses/question.dart';
 
@@ -28,49 +29,7 @@ class _ImageQuestionState extends State<ImageQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(
-                width: 10,
-              ),
-              const Text(
-                'QUIZZ',
-                style: TextStyle(color: Color.fromRGBO(67, 12, 5, 1)),
-              ),
-              const SizedBox(
-                width: 215,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(35.0))), //
-                child: RawMaterialButton(
-                  fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                  elevation: 0.0,
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32.0),
-                  ),
-                  onPressed: () async {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const ProfileScreen()));
-                  },
-                  child: const Text("Profile",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      )),
-                ),
-              )
-            ],
-          ),
-          backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
-        ),
+        appBar: const CustomAppBar(),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(

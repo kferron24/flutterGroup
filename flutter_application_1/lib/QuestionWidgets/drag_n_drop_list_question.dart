@@ -1,33 +1,40 @@
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
-import '../Log/appbar.dart';
-import '../QuestionClasses/question.dart';
-import '../Log/profile_screen.dart';
-import '../Log/log_page.dart';
-import 'questionary.dart';
 
-class DichotomicQuestion extends StatefulWidget {
+import '../Log/SAppBar.dart';
+import '../Log/log_page.dart';
+import '../QuestionClasses/question.dart';
+
+class DragNDropListQuestion extends StatefulWidget {
   final String? question;
-  final int? questionID;
+  final int questionID;
   final List<String>? options;
-  final List<int>? next;
+  final int next;
   final List<Question>? listQuestions;
 
-  const DichotomicQuestion({
-    super.key,
-    required this.question,
-    required this.questionID,
-    required this.options,
-    required this.next,
-    required this.listQuestions,
-  });
+  const DragNDropListQuestion(
+      {super.key,
+      this.question,
+      required this.questionID,
+      required this.options,
+      required this.next,
+      this.listQuestions});
 
   @override
-  State<DichotomicQuestion> createState() => _DichotomicQuestionState();
+  State<DragNDropListQuestion> createState() => _DragNDropListQuestionState();
 }
 
-class _DichotomicQuestionState extends State<DichotomicQuestion> {
-  var answer = "";
-  late int optionsIdx;
+class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
+  List<String> options = [];
+  final Color oddItemColor = const Color.fromARGB(150, 255, 255, 255);
+  final Color evenItemColor = const Color.fromARGB(100, 255, 255, 255);
+
+  @override
+  void initState() {
+    super.initState();
+    options = widget.options!;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,6 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: SingleChildScrollView(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,20 +57,43 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       ),
                     ),
                     const SizedBox(height: 22.0),
-                    ...widget.options!
-                        .map((option) => [
-                              RadioListTile<String>(
-                                value: option,
-                                groupValue: answer,
-                                title: Text(option),
-                                onChanged: (v) => setState(() {
-                                  answer = v!;
-                                  optionsIdx = widget.options!.indexOf(option);
-                                }),
-                              )
-                            ])
-                        .expand((w) => w)
-                        .toList(),
+                    // Expanded(
+                    //     child: ListView(
+                    //   padding: const EdgeInsets.all(8),
+                    //   children: const <Widget>[
+                    //     SizedBox(
+                    //       height: 50,
+                    //       child: Center(child: Text('Entry A')),
+                    //     ),
+                    //     SizedBox(
+                    //       height: 50,
+                    //       child: Center(child: Text('Entry B')),
+                    //     ),
+                    //     SizedBox(
+                    //       height: 50,
+                    //       child: Center(child: Text('Entry C')),
+                    //     ),
+                    //   ],
+                    // )),
+                    Expanded(
+                        child: ReorderableListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      itemCount: options.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          key: Key('$index'),
+                          title: Text(options[index]),
+                          tileColor: index.isOdd ? oddItemColor : evenItemColor,
+                        );
+                      },
+                      onReorder: (int oldIndex, int newIndex) {
+                        setState(() {
+                          final index = newIndex;
+                          final option = options.removeAt(oldIndex);
+                          options.insert(index, option);
+                        });
+                      },
+                    )),
                     const SizedBox(height: 22.0),
                     Container(
                       width: double.infinity,
@@ -82,7 +111,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          switch (widget.next![optionsIdx]) {
+                          switch (widget.next) {
                             case -1:
                               {
                                 Navigator.of(context).pushReplacement(
@@ -99,7 +128,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                     MaterialPageRoute(
                                         builder: (context) => widget
                                             .listQuestions![
-                                                widget.questionID! + 1]
+                                                widget.questionID + 1]
                                             .createWidget(
                                                 widget.listQuestions!)));
                               }
@@ -109,8 +138,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) => widget
-                                            .listQuestions![
-                                                widget.next![optionsIdx]]
+                                            .listQuestions![widget.next]
                                             .createWidget(
                                                 widget.listQuestions!)));
                               }
@@ -153,6 +181,6 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       ),
                     )
                   ],
-                )))));
+                ))));
   }
 }
