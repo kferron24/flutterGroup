@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/appbar.dart';
+import 'package:flutter_application_1/components/appbar.dart';
 import 'Log/log_page.dart';
 import 'home_screen.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Log/log_page.dart';
 
-import '../Log/appbar.dart';
+import '../components/appbar.dart';
 import 'text_slider.dart';
 
 const List<Widget> icons = <Widget>[

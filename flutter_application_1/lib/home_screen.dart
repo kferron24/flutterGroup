@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
 import 'package:flutter_application_1/QuestionWidgets/questionnary.dart';
-import 'Log/appbar.dart';
+
+import 'components/appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

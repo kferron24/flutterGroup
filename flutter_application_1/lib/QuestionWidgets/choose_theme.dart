@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Log/log_page.dart';
 
-import 'package:flutter_application_1/Log/appbar.dart';
+import 'package:flutter_application_1/components/appbar.dart';
 import 'package:flutter_application_1/QuestionWidgets/image_question.dart';
 
 class ChooseTheme extends StatefulWidget {

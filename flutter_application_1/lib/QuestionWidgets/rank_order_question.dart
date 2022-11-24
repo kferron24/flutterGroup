@@ -1,9 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 
-import '../Log/appbar.dart';
+import '../components/appbar.dart';
 import '../Log/log_page.dart';
-import '../Log/profile_screen.dart';
+import '../Profile/profile_screen.dart';
 
 enum Answer { rate1, rate2, rate3 }
 

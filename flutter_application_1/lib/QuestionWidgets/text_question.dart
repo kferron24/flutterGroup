@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
-import '../Log/appbar.dart';
+import '../components/appbar.dart';
 import 'choose_theme.dart';
 
 class TextQuestion extends StatefulWidget {
