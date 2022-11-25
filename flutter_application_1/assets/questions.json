@@ -17,7 +17,7 @@
         {
             "type":"DICHOTOMIC",
             "id":2,
-            "text": "Question 1",
+            "text": "Question 1 : How did you find this survey?",
             "options":["Fine","Bad"],
             "next":[0,-1]
         },
@@ -26,14 +26,14 @@
             "id":3,
             "text": "What is the capital of France ?",
             "options":["Paris","New York"],
-            "next":[3,0]
+            "next":1
         },
         {
             "type":"DICHOTOMIC",
             "id":4,
-            "text": "Question 3",
+            "text": "Do you want to end this survey?",
             "options":["Yes","No"],
-            "next":[1,0]
+            "next":[-1,1]
         }
     ]
 }
