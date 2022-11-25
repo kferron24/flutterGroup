@@ -9,7 +9,6 @@ import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
 import '../QuestionClasses/question.dart';
-import '../QuestionClasses/image_class.dart';
 import '../QuestionClasses/text_class.dart';
 
 Future<List<Question>> readJsonFile(String filePath) async {
@@ -32,21 +31,6 @@ Future<List<Question>> readJsonFile(String filePath) async {
           }
           var dicho =
               DichotomicClass(question['text'], question['id'], options, nexts);
-          list.add(dicho);
-        }
-        break;
-      case "IMAGE":
-        {
-          List<String> options = [];
-          for (String option in question['options']) {
-            options.add(option);
-          }
-          List<int> nexts = [];
-          for (int next in question['next']) {
-            nexts.add(next);
-          }
-          var dicho =
-              ImageClass(question['text'], question['id'], options, nexts);
           list.add(dicho);
         }
         break;
@@ -122,7 +106,7 @@ class _QuestionaryState extends State<Questionary> {
   Widget build(BuildContext context) {
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
-        ? const Text("Loading...")
+        ? const Text("Loading questionary...")
         : questions[0].createWidget(questions);
   }
 }

@@ -97,32 +97,6 @@ class _TextQuestionState extends State<TextQuestion> {
                         )),
                   ),
                 ),
-                const SizedBox(height: 50.0),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(35.0))), //
-                  child: RawMaterialButton(
-                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const LogPage()));
-                    },
-                    child: const Text("Log out",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        )),
-                  ),
-                )
               ],
             ))));
   }

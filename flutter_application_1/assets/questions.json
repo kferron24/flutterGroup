@@ -1,11 +1,12 @@
-{
+{   "questionary_id":1,
+    "questionary_name":"Questionaire 1",
     "questions":[
         {
-            "type":"DRAG_N_DROP_LIST",
+            "type":"DICHOTOMIC",
             "id":0,
-            "text": "Classez ces options",
-            "options":["nwxcihqpds","qsfdwxcrk","Flqsdkfjms","qsdfmlkjq","qmsdlkjf","poeriuaz","vcxpwn"],
-            "next":2
+            "text": "Question 1",
+            "options":["Fine","Bad"],
+            "next":[0,-1]
         },
         {
             "type":"STAR_RATING",
@@ -25,8 +26,7 @@
             "type":"TEXT",
             "id":3,
             "text": "What is the capital of France ?",
-            "options":["Paris","New York"],
-            "next":[3,0]
+            "next":2
         },
         {
             "type":"DICHOTOMIC",
