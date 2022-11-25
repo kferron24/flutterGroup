@@ -1,9 +1,9 @@
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../Log/appbar.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
+import '../components/appbar.dart';
 
 class StarRatingQuestion extends StatefulWidget {
   final String? question;
@@ -36,7 +36,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(type: 'Profile'),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),

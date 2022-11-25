@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../Log/appbar.dart';
-import '../Log/s_appbar.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
+import '../components/appbar.dart';
 
 class MultipleChoiceQuestion extends StatefulWidget {
   final String? question;
@@ -37,7 +36,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(type: 'Profile'),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),

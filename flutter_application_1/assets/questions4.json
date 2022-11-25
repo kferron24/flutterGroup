@@ -3,22 +3,22 @@
         {
             "type":"DICHOTOMIC",
             "id":0,
-            "text": "DO YOU LIKE CARS",
+            "text": "DO YOU LIKE VIDEO GAMES",
             "options":["YES","NO"],
             "next":[0,-1]
         },        
         {
             "type":"TEXT",
             "id":1,
-            "text": "What is your favourite car?",
+            "text": "What is your favourite video game?",
             "options":["Paris","New York"],
             "next":2
         },        
         {
             "type":"MULTIPLECHOICE",
             "id":2,
-            "text": "What car brands do you like ?",
-            "options":["ferrari","Porsh","Bugatti","Fiat"],
+            "text": "What video game do you like ?",
+            "options":["GTA","FORZA","ROCKET LEAGUE","CALL OF DUTY"],
             "next":3
         },
         {

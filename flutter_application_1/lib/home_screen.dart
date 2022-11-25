@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
+
 import 'package:flutter_application_1/QuestionWidgets/questionary.dart';
-import 'Log/appbar.dart';
+import 'package:flutter_application_1/QuestionWidgets/questionary2.dart';
+import 'package:flutter_application_1/QuestionWidgets/questionary3.dart';
+import 'package:flutter_application_1/QuestionWidgets/questionary4.dart';
+import 'components/appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(type: 'Profile'),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(
@@ -45,7 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       InkWell(
-                        customBorder: const CircleBorder(),
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const Questionary2()));
+                        }, // Image tapped
+                        splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(
                           fit: BoxFit.cover, // Fixes border issues
                           width: 150,
@@ -72,32 +81,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ]),
-                const SizedBox(height: 5.0),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Text(
-                        "Movies",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Cars",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ]),
+                const SizedBox(height: 15.0),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-                        onTap: () {}, // Image tapped
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const Questionary3()));
+                        }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(
                           fit: BoxFit.cover, // Fixes border issues
@@ -109,7 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {}, // Image tapped
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const Questionary4()));
+                        }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: Ink.image(
                           fit: BoxFit.cover, // Fixes border issues
@@ -118,27 +115,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: const AssetImage(
                             'assets/videoGame.jpg',
                           ),
-                        ),
-                      ),
-                    ]),
-                const SizedBox(height: 5.0),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Text(
-                        "Sports",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Video Games",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ]),

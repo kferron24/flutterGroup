@@ -1,9 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 
-import '../Log/appbar.dart';
 import '../Log/log_page.dart';
-import '../Log/profile_screen.dart';
+import '../Profile/profile_screen.dart';
+import '../components/appbar.dart';
 
 enum Answer { rate1, rate2, rate3 }
 
@@ -39,7 +39,7 @@ class _RankedQuestion extends State<RankedQuestion> {
     // ignore: no_leading_underscores_for_local_identifiers
 
     return Scaffold(
-        appBar: CustomAppBar(type: 'Profile'),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(40.0),
             child: SingleChildScrollView(

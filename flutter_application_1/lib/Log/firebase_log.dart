@@ -35,6 +35,11 @@ Future<void> userSetup(
   users
       .doc(uid)
       .set({'email': email, 'password': password, 'questionaryDone': []});
+  // users
+  //     .doc(uid)
+  //     .collection("questionaryDone")
+  //     .doc()
+  //     .set({'answer': [], 'index': ""});
 
   return;
 }

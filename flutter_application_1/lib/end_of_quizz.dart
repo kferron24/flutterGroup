@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/appbar.dart';
 import 'Log/log_page.dart';
+import 'components/appbar.dart';
 import 'home_screen.dart';
 
 class EndOfQuizz extends StatefulWidget {
@@ -14,7 +14,7 @@ class _EndOfQuizzState extends State<EndOfQuizz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           type: 'Login',
         ),
         body: Padding(

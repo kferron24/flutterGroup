@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Log/appbar.dart';
 import '../QuestionClasses/question.dart';
-import '../Log/profile_screen.dart';
 import '../Log/log_page.dart';
-import 'questionary.dart';
+import '../components/appbar.dart';
 
 class DichotomicQuestion extends StatefulWidget {
   final String? question;
@@ -32,7 +30,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(type: 'Profile'),
+        appBar: const CustomAppBar(type: 'Profile'),
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),

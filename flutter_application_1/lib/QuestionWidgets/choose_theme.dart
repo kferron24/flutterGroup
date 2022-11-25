@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Log/log_page.dart';
-
-import 'package:flutter_application_1/Log/appbar.dart';
-import 'package:flutter_application_1/QuestionWidgets/image_question.dart';
+import '../components/appbar.dart';
 
 class ChooseTheme extends StatefulWidget {
   const ChooseTheme({super.key});
@@ -16,7 +14,7 @@ class _ChooseThemeState extends State<ChooseTheme> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           type: 'Profile',
         ),
         body: Padding(

@@ -3,22 +3,22 @@
         {
             "type":"DICHOTOMIC",
             "id":0,
-            "text": "DO YOU LIKE CARS",
+            "text": "DO YOU LIKE SPORTS",
             "options":["YES","NO"],
             "next":[0,-1]
         },        
         {
             "type":"TEXT",
             "id":1,
-            "text": "What is your favourite car?",
+            "text": "What is your favourite sport?",
             "options":["Paris","New York"],
             "next":2
         },        
         {
             "type":"MULTIPLECHOICE",
             "id":2,
-            "text": "What car brands do you like ?",
-            "options":["ferrari","Porsh","Bugatti","Fiat"],
+            "text": "What sports do you like ?",
+            "options":["Basketball","Soccer","Tenis","Table tenis"],
             "next":3
         },
         {

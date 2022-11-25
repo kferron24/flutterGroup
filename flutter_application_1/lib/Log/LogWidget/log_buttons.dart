@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../components/snackbar.dart';
 import '../../home_screen.dart';
 import '../firebase_log.dart';
 
@@ -12,17 +13,6 @@ class LogButtons extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
   });
-
-  void getSnackBar(context, response) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(response),
-        duration: const Duration(milliseconds: 3000),
-        backgroundColor: const Color.fromARGB(255, 0, 161, 172),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
