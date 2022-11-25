@@ -65,28 +65,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                     onPressed: () async {
-                      switch (widget.type) {
-                        case "Profile":
-                          {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ProfileScreen()));
-                          }
-                          break;
-                        case "Login":
-                          {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()));
-                          }
-                          break;
-                        case "Notloged":
-                          {
-                            getSnackBar(context,
-                                'Connectez vous pour pouvoir accèder à votre profile');
-                          }
-                      }
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
                     },
                     child: const Text("Home",
                         style: TextStyle(
@@ -139,13 +119,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         const ProfileScreen()));
-                          }
-                          break;
-                        case "Login":
-                          {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()));
                           }
                           break;
                         case "Notloged":

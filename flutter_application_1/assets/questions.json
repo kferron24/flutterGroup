@@ -9,28 +9,28 @@
         },
         {
             "type":"STAR_RATING",
-            "id":1,
+            "id":0,
             "text": "Classez ces options",
             "range":[0,3,5],
             "next":2
         },
         {
             "type":"DICHOTOMIC",
-            "id":2,
+            "id":1,
             "text": "Question 1",
             "options":["Fine","Bad"],
             "next":[0,-1]
         },
         {
             "type":"TEXT",
-            "id":3,
+            "id":2,
             "text": "What is the capital of France ?",
             "options":["Paris","New York"],
-            "next":[3,0]
+            "next":3
         },
         {
             "type":"DICHOTOMIC",
-            "id":4,
+            "id":3,
             "text": "Question 3",
             "options":["Yes","No"],
             "next":[1,0]
