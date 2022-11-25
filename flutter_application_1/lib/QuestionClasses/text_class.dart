@@ -1,4 +1,5 @@
 import '../QuestionWidgets/text_question.dart';
+import 'answer.dart';
 import 'question.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +20,13 @@ class TextClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions) {
+  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
     return TextQuestion(
         question: text,
         questionID: id!,
         next: _next!,
-        listQuestions: questions);
+        listQuestions: questions,
+        listAnswers: answers);
   }
 
   @override
