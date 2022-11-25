@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/QuestionClasses/answer.dart';
 
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
@@ -10,6 +11,7 @@ class DragNDropListQuestion extends StatefulWidget {
   final List<String>? options;
   final int next;
   final List<Question>? listQuestions;
+  final List<Answer>? listAnswers;
 
   const DragNDropListQuestion(
       {super.key,
@@ -17,7 +19,8 @@ class DragNDropListQuestion extends StatefulWidget {
       required this.questionID,
       required this.options,
       required this.next,
-      this.listQuestions});
+      this.listQuestions,
+      this.listAnswers});
 
   @override
   State<DragNDropListQuestion> createState() => _DragNDropListQuestionState();
@@ -109,6 +112,10 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
+                          List<Answer> tempListAnswers = widget.listAnswers!;
+                          tempListAnswers
+                              .add(Answer(options, widget.questionID));
+
                           switch (widget.next) {
                             case -1:
                               {
@@ -116,8 +123,8 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                     MaterialPageRoute(
                                         builder: (context) => widget
                                             .listQuestions!.last
-                                            .createWidget(
-                                                widget.listQuestions!)));
+                                            .createWidget(widget.listQuestions!,
+                                                tempListAnswers)));
                               }
                               break;
                             case 0:
@@ -127,8 +134,8 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                         builder: (context) => widget
                                             .listQuestions![
                                                 widget.questionID + 1]
-                                            .createWidget(
-                                                widget.listQuestions!)));
+                                            .createWidget(widget.listQuestions!,
+                                                tempListAnswers)));
                               }
                               break;
                             default:
@@ -137,8 +144,8 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                     MaterialPageRoute(
                                         builder: (context) => widget
                                             .listQuestions![widget.next]
-                                            .createWidget(
-                                                widget.listQuestions!)));
+                                            .createWidget(widget.listQuestions!,
+                                                tempListAnswers)));
                               }
                               break;
                           }

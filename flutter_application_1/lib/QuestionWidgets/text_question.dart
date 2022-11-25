@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
+import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 
@@ -8,6 +9,7 @@ class TextQuestion extends StatefulWidget {
   final int? questionID;
   final int? next;
   final List<Question>? listQuestions;
+  final List<Answer>? listAnswers;
 
   const TextQuestion({
     super.key,
@@ -15,6 +17,7 @@ class TextQuestion extends StatefulWidget {
     required this.questionID,
     required this.next,
     required this.listQuestions,
+    this.listAnswers,
   });
 
   @override
@@ -85,10 +88,41 @@ class _TextQuestionState extends State<TextQuestion> {
                       borderRadius: BorderRadius.circular(17.0),
                     ),
                     onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => widget
-                              .listQuestions![widget.next!]
-                              .createWidget(widget.listQuestions!)));
+                      List<Answer> tempListAnswers = widget.listAnswers!;
+                      tempListAnswers.add(Answer(_answer, widget.questionID!));
+
+                      switch (widget.next) {
+                        case -1:
+                          {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        widget.listQuestions!.last.createWidget(
+                                            widget.listQuestions!,
+                                            widget.listAnswers!)));
+                          }
+                          break;
+                        case 0:
+                          {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => widget
+                                        .listQuestions![widget.questionID! + 1]
+                                        .createWidget(widget.listQuestions!,
+                                            widget.listAnswers!)));
+                          }
+                          break;
+                        default:
+                          {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => widget
+                                        .listQuestions![widget.next!]
+                                        .createWidget(widget.listQuestions!,
+                                            widget.listAnswers!)));
+                          }
+                          break;
+                      }
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(

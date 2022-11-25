@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_application_1/QuestionClasses/drag_n_drop_list_class.dart';
 import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 
@@ -90,6 +91,7 @@ class Questionary extends StatefulWidget {
 class _QuestionaryState extends State<Questionary> {
   //Méthode initState
   final List<Question> questions = [];
+  final List<Answer> answers = [];
 
   @override
   void initState() {
@@ -107,6 +109,6 @@ class _QuestionaryState extends State<Questionary> {
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
         ? const Text("Loading questionary...")
-        : questions[0].createWidget(questions);
+        : questions[0].createWidget(questions, answers);
   }
 }
