@@ -83,8 +83,6 @@ Future<List<Question>> readJsonFile(String filePath) async {
           for (int option in question['range']) {
             range.add(option.toDouble());
           }
-          print("//////////////////////////////////////// \n");
-          print(range);
           int next = question['next'];
           var slider =
               TextSliderClass(question['text'], question['id'], range, next);

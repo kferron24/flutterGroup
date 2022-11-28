@@ -58,27 +58,9 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                       ),
                     ),
                     const SizedBox(height: 22.0),
-                    // Expanded(
-                    //     child: ListView(
-                    //   padding: const EdgeInsets.all(8),
-                    //   children: const <Widget>[
-                    //     SizedBox(
-                    //       height: 50,
-                    //       child: Center(child: Text('Entry A')),
-                    //     ),
-                    //     SizedBox(
-                    //       height: 50,
-                    //       child: Center(child: Text('Entry B')),
-                    //     ),
-                    //     SizedBox(
-                    //       height: 50,
-                    //       child: Center(child: Text('Entry C')),
-                    //     ),
-                    //   ],
-                    // )),
-                    Expanded(
+                    Container(
+                      height: 56*options.length.toDouble(),
                         child: ReorderableListView.builder(
-                      padding: const EdgeInsets.symmetric(horizontal: 40),
                       itemCount: options.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
@@ -89,9 +71,11 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                       },
                       onReorder: (int oldIndex, int newIndex) {
                         setState(() {
-                          final index = newIndex;
-                          final option = options.removeAt(oldIndex);
-                          options.insert(index, option);
+                          if (newIndex > oldIndex) {
+                            newIndex -= 1;
+                          }
+                          final items = options.removeAt(oldIndex);
+                          options.insert(newIndex, items);
                         });
                       },
                     )),
@@ -157,34 +141,6 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                             )),
                       ),
                     ),
-                    const SizedBox(height: 50.0),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromRGBO(255, 0, 0, 0),
-                              width: 3),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(35.0))), //
-                      child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                        elevation: 0.0,
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32.0),
-                        ),
-                        onPressed: () async {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const LogPage()));
-                        },
-                        child: const Text("Log out",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                            )),
-                      ),
-                    )
                   ],
                 ))));
   }

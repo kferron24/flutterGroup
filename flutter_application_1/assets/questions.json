@@ -2,10 +2,10 @@
     "questionary_name":"Questionaire 1",
     "questions":[
         {
-            "type":"TEXT_SLIDER",
-            "id":1,
+            "type":"DRAG_N_DROP_LIST",
+            "id":0,
             "text": "Donnez une note",
-            "range":[0,50,100,100],
+            "options":["aezraze","aerarez","earzaze","qqsdf","zarezr"],
             "next":2
         },
         {
