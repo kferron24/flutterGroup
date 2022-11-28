@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
+import 'dart:convert';
+import 'storage/storage.dart';
 
 import 'package:flutter_application_1/QuestionWidgets/questionary.dart';
 import 'package:flutter_application_1/QuestionWidgets/questionary2.dart';
@@ -17,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final Storage storage = Storage();
     return Scaffold(
         appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
@@ -55,14 +58,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => const Questionary2()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
-                        child: Ink.image(
-                          fit: BoxFit.cover, // Fixes border issues
-                          width: 150,
-                          height: 100,
-                          image: const AssetImage(
-                            'assets/marvel.jpg',
-                          ),
-                        ),
+                        child: FutureBuilder(
+                            future: storage.downloadURL('movie.jpg'),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<dynamic> snapshot) {
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                return Container(
+                                    width: 150,
+                                    height: 100,
+                                    child: Image.network(
+                                      snapshot.data!,
+                                      fit: BoxFit.cover,
+                                    ));
+                              }
+                              if (snapshot.connectionState ==
+                                      ConnectionState.waiting ||
+                                  !snapshot.hasData) {
+                                return const CircularProgressIndicator();
+                              }
+                              return Container();
+                            }),
                       ),
                       InkWell(
                         onTap: () {
@@ -71,14 +88,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => const Questionary()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
-                        child: Ink.image(
-                          fit: BoxFit.cover, // Fixes border issues
-                          width: 150,
-                          height: 100,
-                          image: const AssetImage(
-                            'assets/cars.jpg',
-                          ),
-                        ),
+                        child: FutureBuilder(
+                            future: storage.downloadURL('cars.jpg'),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<dynamic> snapshot) {
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                return Container(
+                                    width: 150,
+                                    height: 100,
+                                    child: Image.network(
+                                      snapshot.data!,
+                                      fit: BoxFit.cover,
+                                    ));
+                              }
+                              if (snapshot.connectionState ==
+                                      ConnectionState.waiting ||
+                                  !snapshot.hasData) {
+                                return const CircularProgressIndicator();
+                              }
+                              return Container();
+                            }),
                       ),
                     ]),
                 const SizedBox(height: 15.0),
@@ -92,14 +123,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => const Questionary3()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
-                        child: Ink.image(
-                          fit: BoxFit.cover, // Fixes border issues
-                          width: 150,
-                          height: 100,
-                          image: const AssetImage(
-                            'assets/sports.jpeg',
-                          ),
-                        ),
+                        child: FutureBuilder(
+                            future: storage.downloadURL('sport.jpg'),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<dynamic> snapshot) {
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                return Container(
+                                    width: 150,
+                                    height: 100,
+                                    child: Image.network(
+                                      snapshot.data!,
+                                      fit: BoxFit.cover,
+                                    ));
+                              }
+                              if (snapshot.connectionState ==
+                                      ConnectionState.waiting ||
+                                  !snapshot.hasData) {
+                                return const CircularProgressIndicator();
+                              }
+                              return Container();
+                            }),
                       ),
                       InkWell(
                         onTap: () {
@@ -108,14 +153,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => const Questionary4()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
-                        child: Ink.image(
-                          fit: BoxFit.cover, // Fixes border issues
-                          width: 150,
-                          height: 100,
-                          image: const AssetImage(
-                            'assets/videoGame.jpg',
-                          ),
-                        ),
+                        child: FutureBuilder(
+                            future: storage.downloadURL('videogame.jpg'),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<dynamic> snapshot) {
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                return Container(
+                                    width: 150,
+                                    height: 100,
+                                    child: Image.network(
+                                      snapshot.data!,
+                                      fit: BoxFit.cover,
+                                    ));
+                              }
+                              if (snapshot.connectionState ==
+                                      ConnectionState.waiting ||
+                                  !snapshot.hasData) {
+                                return const CircularProgressIndicator();
+                              }
+                              return Container();
+                            }),
                       ),
                     ]),
                 const SizedBox(height: 50.0),
