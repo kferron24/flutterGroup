@@ -2,11 +2,11 @@
     "questionary_name":"Questionaire 1",
     "questions":[
         {
-            "type":"DICHOTOMIC",
-            "id":0,
-            "text": "Question 1",
-            "options":["Fine","Bad"],
-            "next":[0,-1]
+            "type":"TEXT_SLIDER",
+            "id":1,
+            "text": "Donnez une note",
+            "range":[0,50,100,100],
+            "next":2
         },
         {
             "type":"STAR_RATING",
