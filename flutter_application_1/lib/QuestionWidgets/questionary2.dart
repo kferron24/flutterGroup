@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_application_1/QuestionClasses/drag_n_drop_list_class.dart';
+import 'package:flutter_application_1/QuestionClasses/slider_class.dart';
 import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 
 import '../QuestionClasses/dichotomic_class.dart';
@@ -59,9 +61,9 @@ Future<List<Question>> readJsonFile(String filePath) async {
             range.add(option);
           }
           int next = question['next'];
-          var dicho =
+          var star =
               StarRatingClass(question['text'], question['id'], range, next);
-          list.add(dicho);
+          list.add(star);
         }
         break;
       case "DRAG_N_DROP_LIST":
@@ -73,6 +75,18 @@ Future<List<Question>> readJsonFile(String filePath) async {
           var multip = DragNDropListClass(
               question['text'], question['id'], options, question['next']);
           list.add(multip);
+        }
+        break;
+      case "TEXT_SLIDER":
+        {
+          List<double> range = [];
+          for (int option in question['range']) {
+            range.add(option.toDouble());
+          }
+          int next = question['next'];
+          var slider =
+              TextSliderClass(question['text'], question['id'], range, next);
+          list.add(slider);
         }
         break;
     }
@@ -90,6 +104,7 @@ class Questionary2 extends StatefulWidget {
 class _Questionary2State extends State<Questionary2> {
   //Méthode initState
   final List<Question> questions = [];
+  final List<Answer> answers = [];
 
   @override
   void initState() {
@@ -106,7 +121,7 @@ class _Questionary2State extends State<Questionary2> {
   Widget build(BuildContext context) {
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
-        ? const Text("Loading...")
-        : questions[0].createWidget(questions);
+        ? const Text("Loading questionary...")
+        : questions[0].createWidget(questions, answers);
   }
 }

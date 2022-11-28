@@ -1,20 +1,19 @@
-import 'package:flutter_application_1/QuestionClasses/answer.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
-
 import '../Log/log_page.dart';
+import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import '../end_of_quizz.dart';
 
-class StarRatingQuestion extends StatefulWidget {
+class TextSliderQuestion extends StatefulWidget {
   final String? question;
   final int questionID;
-  final List<int> range;
+  final List<double> range;
   final int next;
   final List<Question>? listQuestions;
   final List<Answer>? listAnswers;
 
-  const StarRatingQuestion(
+  const TextSliderQuestion(
       {super.key,
       this.question,
       required this.questionID,
@@ -24,16 +23,16 @@ class StarRatingQuestion extends StatefulWidget {
       this.listAnswers});
 
   @override
-  State<StarRatingQuestion> createState() => _StarRatingQuestionState();
+  State<TextSliderQuestion> createState() => _TextSliderQuestionState();
 }
 
-class _StarRatingQuestionState extends State<StarRatingQuestion> {
-  late int rating;
+class _TextSliderQuestionState extends State<TextSliderQuestion> {
+  late double _value;
 
   @override
   void initState() {
     super.initState();
-    rating = widget.range[1];
+    _value = widget.range[1];
   }
 
   @override
@@ -57,19 +56,18 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 22.0),
-                    RatingBar.builder(
-                      initialRating: widget.range[1].toDouble(),
-                      minRating: widget.range[0].toDouble(),
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: widget.range[2],
-                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.blue,
-                      ),
-                      onRatingUpdate: (rating) {},
+                    const SizedBox(height: 28.0),
+                    Slider(
+                      min: widget.range[0],
+                      max: widget.range[3],
+                      value: _value,
+                      divisions: widget.range[2].toInt(),
+                      label: '${_value.round()}',
+                      onChanged: (value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
                     ),
                     const SizedBox(height: 22.0),
                     Container(
@@ -90,7 +88,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                         onPressed: () async {
                           List<Answer> tempListAnswers = widget.listAnswers!;
                           tempListAnswers
-                              .add(Answer(rating, widget.questionID));
+                              .add(Answer(_value, widget.questionID));
                           switch (widget.next) {
                             case -1:
                               {

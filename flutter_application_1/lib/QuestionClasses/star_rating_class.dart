@@ -1,12 +1,13 @@
 import 'package:flutter_application_1/QuestionWidgets/star_rating_question.dart';
 
 import '../QuestionWidgets/dichotomic_question.dart';
+import 'answer.dart';
 import 'question.dart';
 
 import 'package:flutter/material.dart';
 
 class StarRatingClass extends Question {
-  List<int>? _range;// range : [min_rating,init_rating,max_rating]
+  List<int>? _range; // range : [min_rating,init_rating,max_rating]
   int? _next;
 
   StarRatingClass(String txt, int identifiant, List<int> range, int next) {
@@ -24,13 +25,14 @@ class StarRatingClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions) {
+  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
     return StarRatingQuestion(
         question: text,
         questionID: id!,
         range: _range!,
         next: _next!,
-        listQuestions: questions);
+        listQuestions: questions,
+        listAnswers: answers);
   }
 
   @override

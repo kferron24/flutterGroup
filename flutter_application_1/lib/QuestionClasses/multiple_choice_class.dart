@@ -1,4 +1,5 @@
 import '../QuestionWidgets/multiple_choice_question.dart';
+import 'answer.dart';
 import 'question.dart';
 import 'package:flutter/material.dart';
 
@@ -22,13 +23,14 @@ class MultipleChoiceClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions) {
+  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
     return MultipleChoiceQuestion(
       question: text,
       questionID: id!,
       options: _options!,
       next: _next!,
       listQuestions: questions,
+      listAnswers: answers,
     );
   }
 

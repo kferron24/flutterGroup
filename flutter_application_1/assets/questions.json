@@ -2,12 +2,12 @@
     "questionary_name":"Questionaire 1",
     "questions":[
         {
-            "type":"DICHOTOMIC",
+            "type":"DRAG_N_DROP_LIST",
             "id":0,
-            "text": "DO YOU LIKE CARS",
-            "options":["YES","NO"],
-            "next":[0,-1]
-        },        
+            "text": "Donnez une note",
+            "options":["aezraze","aerarez","earzaze","qqsdf","zarezr"],
+            "next":2
+        },
         {
             "type":"TEXT",
             "id":1,
