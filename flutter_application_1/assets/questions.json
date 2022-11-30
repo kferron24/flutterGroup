@@ -1,5 +1,5 @@
-{   "questionary_id":1,
-    "questionary_name":"Questionaire 1",
+{   "index":1,
+    "questionary_name":"Questionnaire 1",
     "questions":[
         {
             "type":"DRAG_N_DROP_LIST",

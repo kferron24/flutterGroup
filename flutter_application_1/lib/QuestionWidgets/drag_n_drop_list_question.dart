@@ -66,6 +66,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                         return ListTile(
                           key: Key('$index'),
                           title: Text(options[index]),
+                          trailing: const Icon(Icons.drag_indicator),
                           tileColor: index.isOdd ? oddItemColor : evenItemColor,
                         );
                       },
