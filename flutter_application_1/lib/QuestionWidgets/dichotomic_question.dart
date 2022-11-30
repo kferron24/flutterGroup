@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../QuestionClasses/answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/home_screen.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
-import '../home_screen.dart';
 
 class DichotomicQuestion extends StatefulWidget {
   final String? question;
@@ -10,7 +11,7 @@ class DichotomicQuestion extends StatefulWidget {
   final List<String>? options;
   final List<int>? next;
   final List<Question>? listQuestions;
-  final List<Answer>? listAnswers;
+  final QuestionaryDone questionarydone;
 
   const DichotomicQuestion({
     super.key,
@@ -19,7 +20,7 @@ class DichotomicQuestion extends StatefulWidget {
     required this.options,
     required this.next,
     required this.listQuestions,
-    required this.listAnswers,
+    required this.questionarydone,
   });
 
   @override
@@ -83,10 +84,10 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          List<Answer> tempListAnswers = widget.listAnswers!;
-                          tempListAnswers
-                              .add(Answer(answer, widget.questionID!));
+                          QuestionaryAnswer answered = QuestionaryAnswer(
+                              widget.questionID.toString(), answer);
 
+                          widget.questionarydone.answer.add(answered);
                           switch (widget.next![optionsIdx]) {
                             case -1:
                               {
@@ -104,7 +105,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                             .listQuestions![
                                                 widget.questionID! + 1]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.questionarydone)));
                               }
                               break;
                             default:
@@ -115,7 +116,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                             .listQuestions![
                                                 widget.next![optionsIdx]]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.questionarydone)));
                               }
                               break;
                           }
