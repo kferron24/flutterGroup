@@ -2,9 +2,11 @@ import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../Log/firebase_log.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import '../home_screen.dart';
 
 class StarRatingQuestion extends StatefulWidget {
   final String? question;
@@ -94,12 +96,12 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                           switch (widget.next) {
                             case -1:
                               {
+                                updateQuest(
+                                    context: context, answer: tempListAnswers);
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) => widget
-                                            .listQuestions!.last
-                                            .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                        builder: (context) =>
+                                            const HomeScreen()));
                               }
                               break;
                             case 0:

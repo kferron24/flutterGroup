@@ -6,4 +6,10 @@ class Answer {
     value = val;
     questionId = qID;
   }
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return '{$value,$questionId}';
+  }
 }

@@ -4,7 +4,7 @@ class QuestionaryAnswer {
   final String? index;
   final String? msg;
 
-  QuestionaryAnswer({this.index, this.msg});
+  QuestionaryAnswer(this.index, this.msg);
 
   QuestionaryAnswer.fromSnapshot(
       QueryDocumentSnapshot<Map<String, dynamic>> snapshot)

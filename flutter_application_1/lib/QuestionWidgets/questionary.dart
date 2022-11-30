@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_application_1/QuestionClasses/drag_n_drop_list_class.dart';
 import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
@@ -15,9 +16,10 @@ import '../QuestionClasses/text_class.dart';
 Future<List<Question>> readJsonFile(String filePath) async {
   final String response = await rootBundle.loadString('assets/questions.json');
   final data = json.decode(response);
-
   var questionsList = data['questions'];
   List<Question> list = [];
+  
+
   for (var question in questionsList) {
     switch (question['type']) {
       case "DICHOTOMIC":
@@ -106,9 +108,11 @@ class _QuestionaryState extends State<Questionary> {
 
   @override
   Widget build(BuildContext context) {
+    QuestionaryDone questionarydone = QuestionaryDone(id: 0, index: , answer: answer)
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
+
         ? const Text("Loading questionary...")
-        : questions[0].createWidget(questions, answers);
+        : questions[0].createWidget(questions, questionarydone);
   }
 }

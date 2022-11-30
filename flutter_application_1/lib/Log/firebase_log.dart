@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+import '../QuestionClasses/answer.dart';
+
+DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
 Future<String> loginUsingEmailPassword(
     {required String email,
     required String password,
@@ -23,6 +27,31 @@ Future<String> loginUsingEmailPassword(
   }
 
   return "";
+}
+
+Future<String> currentlyIn() async {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  final User fuser = auth.currentUser!;
+  final uid = fuser.uid;
+  return uid;
+}
+
+Future<Map<String, List<String>>?> getQuest(List<Answer> answer) async {
+  String date = dateFormat.format(DateTime.now());
+  Map<String, dynamic> logquest = {"time": date, "answer": answer};
+  return logquest;
+}
+
+Future<void> updateQuest(
+    {required BuildContext context, required List<Answer> answer}) async {
+  //var collection = FirebaseFirestore.instance.collection('collection');
+
+  FirebaseFirestore.instance
+      .collection('users')
+      .doc(await currentlyIn())
+      .set({"questionaryDone": await currentlyIn()});
+
+  return;
 }
 
 Future<void> userSetup(

@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionWidgets/drag_n_drop_list_question.dart';
 
 import '../QuestionWidgets/multiple_choice_question.dart';
@@ -25,14 +26,15 @@ class DragNDropListClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
+  StatefulWidget createWidget(
+      List<Question> questions, QuestionaryDone questionaryDone) {
     return DragNDropListQuestion(
         question: text,
         questionID: id!,
         options: _options!,
         next: _next!,
         listQuestions: questions,
-        listAnswers: answers);
+        questionarydone: questionaryDone);
   }
 
   @override

@@ -26,12 +26,7 @@
             "type":"TEXT",
             "id":3,
             "text": "What is the capital of France ?",
-<<<<<<< HEAD
-            "options":["Paris","New York"],
-            "next":1
-=======
             "next":2
->>>>>>> fd9765eb022692d073e37a3ba9107e05a1ea43c4
         },
         {
             "type":"DICHOTOMIC",
