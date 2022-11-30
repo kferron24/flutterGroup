@@ -6,21 +6,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_application_1/QuestionClasses/drag_n_drop_list_class.dart';
-import 'package:flutter_application_1/QuestionClasses/slider_class.dart';
 import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 
 import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
 import '../QuestionClasses/question.dart';
 import '../QuestionClasses/text_class.dart';
-import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 
 Future<List<Question>> readJsonFile(String filePath) async {
   final String response = await rootBundle.loadString('assets/questions.json');
   final data = json.decode(response);
   var questionsList = data['questions'];
   List<Question> list = [];
-  
 
   for (var question in questionsList) {
     switch (question['type']) {
@@ -64,9 +61,9 @@ Future<List<Question>> readJsonFile(String filePath) async {
             range.add(option);
           }
           int next = question['next'];
-          var star =
+          var dicho =
               StarRatingClass(question['text'], question['id'], range, next);
-          list.add(star);
+          list.add(dicho);
         }
         break;
       case "DRAG_N_DROP_LIST":
@@ -78,18 +75,6 @@ Future<List<Question>> readJsonFile(String filePath) async {
           var multip = DragNDropListClass(
               question['text'], question['id'], options, question['next']);
           list.add(multip);
-        }
-        break;
-      case "TEXT_SLIDER":
-        {
-          List<double> range = [];
-          for (int option in question['range']) {
-            range.add(option.toDouble());
-          }
-          int next = question['next'];
-          var slider =
-              TextSliderClass(question['text'], question['id'], range, next);
-          list.add(slider);
         }
         break;
     }
@@ -109,8 +94,6 @@ class _QuestionaryState extends State<Questionary> {
   final List<Question> questions = [];
   final List<Answer> answers = [];
 
-  QuestionaryDone finalAnswers = QuestionaryDone(index: '1', answer: []);
-
   @override
   void initState() {
     super.initState();
@@ -124,10 +107,10 @@ class _QuestionaryState extends State<Questionary> {
 
   @override
   Widget build(BuildContext context) {
-    QuestionaryDone questionarydone = QuestionaryDone(id: 0, index: , answer: answer)
+    QuestionaryDone questionarydone =
+        QuestionaryDone(id: '0', index: '1', answer: []);
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
-
         ? const Text("Loading questionary...")
         : questions[0].createWidget(questions, questionarydone);
   }

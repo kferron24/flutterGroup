@@ -1,3 +1,5 @@
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+
 import '../QuestionWidgets/text_question.dart';
 import 'answer.dart';
 import 'question.dart';
@@ -20,13 +22,14 @@ class TextClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
+  StatefulWidget createWidget(
+      List<Question> questions, QuestionaryDone questionarydone) {
     return TextQuestion(
         question: text,
         questionID: id!,
         next: _next!,
         listQuestions: questions,
-        listAnswers: answers);
+        questionarydone: questionarydone);
   }
 
   @override
