@@ -1,44 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
-import 'package:flutter_application_1/QuestionClasses/answer.dart';
-
-import '../Log/firebase_log.dart';
 import '../Log/log_page.dart';
-import '../Profile/QuestionaryDone/questionary_answer.dart';
+import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
-import '../home_screen.dart';
+import '../end_of_quizz.dart';
 
-class DragNDropListQuestion extends StatefulWidget {
+class TextSliderQuestion extends StatefulWidget {
   final String? question;
   final int questionID;
-  final List<String>? options;
+  final List<double> range;
   final int next;
   final List<Question>? listQuestions;
-  final QuestionaryDone questionarydone;
+  final List<Answer>? listAnswers;
 
-  const DragNDropListQuestion(
+  const TextSliderQuestion(
       {super.key,
       this.question,
       required this.questionID,
-      required this.options,
+      required this.range,
       required this.next,
-      required this.listQuestions,
-      required this.questionarydone});
+      this.listQuestions,
+      this.listAnswers});
 
   @override
-  State<DragNDropListQuestion> createState() => _DragNDropListQuestionState();
+  State<TextSliderQuestion> createState() => _TextSliderQuestionState();
 }
 
-class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
-  List<String> options = [];
-  final Color oddItemColor = const Color.fromARGB(150, 255, 255, 255);
-  final Color evenItemColor = const Color.fromARGB(100, 255, 255, 255);
+class _TextSliderQuestionState extends State<TextSliderQuestion> {
+  late double _value;
 
   @override
   void initState() {
     super.initState();
-    options = widget.options!;
+    _value = widget.range[1];
   }
 
   @override
@@ -48,7 +42,8 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Column(
+                child: SingleChildScrollView(
+                    child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -61,29 +56,19 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 22.0),
-                    Container(
-                      height: 56*options.length.toDouble(),
-                        child: ReorderableListView.builder(
-                      itemCount: options.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          key: Key('$index'),
-                          title: Text(options[index]),
-                          trailing: const Icon(Icons.drag_indicator),
-                          tileColor: index.isOdd ? oddItemColor : evenItemColor,
-                        );
-                      },
-                      onReorder: (int oldIndex, int newIndex) {
+                    const SizedBox(height: 28.0),
+                    Slider(
+                      min: widget.range[0],
+                      max: widget.range[3],
+                      value: _value,
+                      divisions: widget.range[2].toInt(),
+                      label: '${_value.round()}',
+                      onChanged: (value) {
                         setState(() {
-                          if (newIndex > oldIndex) {
-                            newIndex -= 1;
-                          }
-                          final items = options.removeAt(oldIndex);
-                          options.insert(newIndex, items);
+                          _value = value;
                         });
                       },
-                    )),
+                    ),
                     const SizedBox(height: 22.0),
                     Container(
                       width: double.infinity,
@@ -92,7 +77,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                               color: const Color.fromRGBO(0, 53, 63, 1),
                               width: 2),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(20.0))), //
+                              const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
                         fillColor: const Color.fromRGBO(212, 111, 77, 1),
                         elevation: 0.0,
@@ -101,20 +86,18 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          QuestionaryAnswer answered = QuestionaryAnswer(
-                              widget.questionID.toString(),
-                              widget.options.toString());
-
-                          widget.questionarydone.answer.add(answered);
+                          List<Answer> tempListAnswers = widget.listAnswers!;
+                          tempListAnswers
+                              .add(Answer(_value, widget.questionID));
                           switch (widget.next) {
                             case -1:
                               {
-                                // updateQuest(
-                                //     context: context, answer: widget.options.toString());
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()));
+                                        builder: (context) => widget
+                                            .listQuestions!.last
+                                            .createWidget(widget.listQuestions!,
+                                                widget.listAnswers!)));
                               }
                               break;
                             case 0:
@@ -125,7 +108,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                             .listQuestions![
                                                 widget.questionID + 1]
                                             .createWidget(widget.listQuestions!,
-                                                widget.questionarydone)));
+                                                widget.listAnswers!)));
                               }
                               break;
                             default:
@@ -135,7 +118,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                         builder: (context) => widget
                                             .listQuestions![widget.next]
                                             .createWidget(widget.listQuestions!,
-                                                widget.questionarydone)));
+                                                widget.listAnswers!)));
                               }
                               break;
                           }
@@ -148,6 +131,6 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                       ),
                     ),
                   ],
-                ))));
+                )))));
   }
 }

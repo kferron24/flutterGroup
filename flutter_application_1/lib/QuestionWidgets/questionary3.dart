@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_application_1/QuestionClasses/drag_n_drop_list_class.dart';
 import 'package:flutter_application_1/QuestionClasses/slider_class.dart';
@@ -16,12 +15,11 @@ import '../QuestionClasses/text_class.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 
 Future<List<Question>> readJsonFile(String filePath) async {
-  final String response = await rootBundle.loadString('assets/questions.json');
+  final String response = await rootBundle.loadString('assets/questions3.json');
   final data = json.decode(response);
+
   var questionsList = data['questions'];
   List<Question> list = [];
-  
-
   for (var question in questionsList) {
     switch (question['type']) {
       case "DICHOTOMIC":
@@ -97,24 +95,24 @@ Future<List<Question>> readJsonFile(String filePath) async {
   return list;
 }
 
-class Questionary extends StatefulWidget {
-  const Questionary({super.key});
+class Questionary3 extends StatefulWidget {
+  const Questionary3({super.key});
 
   @override
-  State<Questionary> createState() => _QuestionaryState();
+  State<Questionary3> createState() => _Questionary3State();
 }
 
-class _QuestionaryState extends State<Questionary> {
+class _Questionary3State extends State<Questionary3> {
   //Méthode initState
   final List<Question> questions = [];
   final List<Answer> answers = [];
 
-  QuestionaryDone finalAnswers = QuestionaryDone(index: '1', answer: []);
+  QuestionaryDone finalAnswers = QuestionaryDone(index: '3', answer: []);
 
   @override
   void initState() {
     super.initState();
-    readJsonFile('assets/questions.json').then((value) => setState(() {
+    readJsonFile('assets/questions3.json').then((value) => setState(() {
           questions.addAll(value);
         }));
   }
@@ -124,11 +122,9 @@ class _QuestionaryState extends State<Questionary> {
 
   @override
   Widget build(BuildContext context) {
-    QuestionaryDone questionarydone = QuestionaryDone(id: 0, index: , answer: answer)
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
-
         ? const Text("Loading questionary...")
-        : questions[0].createWidget(questions, questionarydone);
+        : questions[0].createWidget(questions, answers);
   }
 }

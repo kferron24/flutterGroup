@@ -1,7 +1,5 @@
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionWidgets/drag_n_drop_list_question.dart';
-
-import '../QuestionWidgets/multiple_choice_question.dart';
 import 'answer.dart';
 import 'question.dart';
 import 'package:flutter/material.dart';
