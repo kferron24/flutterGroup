@@ -52,15 +52,6 @@ class _TextQuestionState extends State<TextQuestion> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 15.0),
-                const Text(
-                  "What is your name?",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 const SizedBox(height: 22.0),
                 TextFormField(
                   onChanged: (val) {
@@ -68,10 +59,10 @@ class _TextQuestionState extends State<TextQuestion> {
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter your name',
+                    hintText: "Enter your answer",
                   ),
                 ),
-                Text(_answer),
+                // Text(_answer),
                 const SizedBox(height: 12.0),
                 Container(
                   width: double.infinity,
