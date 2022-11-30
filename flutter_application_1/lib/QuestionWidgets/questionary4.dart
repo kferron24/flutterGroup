@@ -12,6 +12,7 @@ import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
 import '../QuestionClasses/question.dart';
 import '../QuestionClasses/text_class.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 
 Future<List<Question>> readJsonFile(String filePath) async {
   final String response = await rootBundle.loadString('assets/questions4.json');
@@ -105,6 +106,8 @@ class _Questionary4State extends State<Questionary4> {
   //Méthode initState
   final List<Question> questions = [];
   final List<Answer> answers = [];
+
+  QuestionaryDone finalAnswers = QuestionaryDone(index: '4', answer: []);
 
   @override
   void initState() {
