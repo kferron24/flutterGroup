@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../components/snackbar.dart';
+import '../../firebase/firebase_log.dart';
 import '../../home_screen.dart';
-import '../firebase_log.dart';
 
 class LogButtons extends StatelessWidget {
   final TextEditingController emailController;
