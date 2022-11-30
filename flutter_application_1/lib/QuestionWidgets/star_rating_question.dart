@@ -1,9 +1,14 @@
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/QuestionClasses/answer.dart';
+import 'package:flutter_application_1/firebase/firestore_profile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import '../home_screen.dart';
 
 class StarRatingQuestion extends StatefulWidget {
   final String? question;
@@ -11,6 +16,7 @@ class StarRatingQuestion extends StatefulWidget {
   final List<int> range;
   final int next;
   final List<Question>? listQuestions;
+  final List<Answer>? listAnswers;
 
   const StarRatingQuestion(
       {super.key,
@@ -18,7 +24,8 @@ class StarRatingQuestion extends StatefulWidget {
       required this.questionID,
       required this.range,
       required this.next,
-      this.listQuestions});
+      this.listQuestions,
+      this.listAnswers});
 
   @override
   State<StarRatingQuestion> createState() => _StarRatingQuestionState();
@@ -35,6 +42,10 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    final questionaryDone = QuestionaryDone(index: "3", answer: [
+      QuestionaryAnswer(index: "1", msg: "Je m'appelle Alex"),
+      QuestionaryAnswer(index: "2", msg: "Bonjour Alex")
+    ]);
     return Scaffold(
         appBar: const CustomAppBar(type: 'Profile'),
         body: Center(
@@ -76,7 +87,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                               color: const Color.fromRGBO(0, 53, 63, 1),
                               width: 2),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(20.0))), //
+                              const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
                         fillColor: const Color.fromRGBO(212, 111, 77, 1),
                         elevation: 0.0,
@@ -85,15 +96,19 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
+                          List<Answer> tempListAnswers = widget.listAnswers!;
+                          tempListAnswers
+                              .add(Answer(rating, widget.questionID));
                           switch (widget.next) {
                             case -1:
                               {
+                                await setQuestionaryDone(
+                                    questionaryDone: questionaryDone);
+                                // ignore: use_build_context_synchronously
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) => widget
-                                            .listQuestions!.last
-                                            .createWidget(
-                                                widget.listQuestions!)));
+                                        builder: (context) =>
+                                            const HomeScreen()));
                               }
                               break;
                             case 0:
@@ -103,8 +118,8 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                                         builder: (context) => widget
                                             .listQuestions![
                                                 widget.questionID + 1]
-                                            .createWidget(
-                                                widget.listQuestions!)));
+                                            .createWidget(widget.listQuestions!,
+                                                widget.listAnswers!)));
                               }
                               break;
                             default:
@@ -113,8 +128,8 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                                     MaterialPageRoute(
                                         builder: (context) => widget
                                             .listQuestions![widget.next]
-                                            .createWidget(
-                                                widget.listQuestions!)));
+                                            .createWidget(widget.listQuestions!,
+                                                widget.listAnswers!)));
                               }
                               break;
                           }
@@ -126,34 +141,6 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                             )),
                       ),
                     ),
-                    const SizedBox(height: 50.0),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromRGBO(255, 0, 0, 0),
-                              width: 3),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(35.0))), //
-                      child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                        elevation: 0.0,
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32.0),
-                        ),
-                        onPressed: () async {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const LogPage()));
-                        },
-                        child: const Text("Log out",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                            )),
-                      ),
-                    )
                   ],
                 )))));
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
+import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 
@@ -8,6 +9,7 @@ class TextQuestion extends StatefulWidget {
   final int? questionID;
   final int? next;
   final List<Question>? listQuestions;
+  final List<Answer>? listAnswers;
 
   const TextQuestion({
     super.key,
@@ -15,6 +17,7 @@ class TextQuestion extends StatefulWidget {
     required this.questionID,
     required this.next,
     required this.listQuestions,
+    this.listAnswers,
   });
 
   @override
@@ -49,15 +52,6 @@ class _TextQuestionState extends State<TextQuestion> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 15.0),
-                const Text(
-                  "What is your name?",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 const SizedBox(height: 22.0),
                 TextFormField(
                   onChanged: (val) {
@@ -65,10 +59,10 @@ class _TextQuestionState extends State<TextQuestion> {
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter your name',
+                    hintText: "Enter your answer",
                   ),
                 ),
-                Text(_answer),
+                // Text(_answer),
                 const SizedBox(height: 12.0),
                 Container(
                   width: double.infinity,
@@ -85,10 +79,41 @@ class _TextQuestionState extends State<TextQuestion> {
                       borderRadius: BorderRadius.circular(17.0),
                     ),
                     onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => widget
-                              .listQuestions![widget.next!]
-                              .createWidget(widget.listQuestions!)));
+                      List<Answer> tempListAnswers = widget.listAnswers!;
+                      tempListAnswers.add(Answer(_answer, widget.questionID!));
+
+                      switch (widget.next) {
+                        case -1:
+                          {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        widget.listQuestions!.last.createWidget(
+                                            widget.listQuestions!,
+                                            widget.listAnswers!)));
+                          }
+                          break;
+                        case 0:
+                          {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => widget
+                                        .listQuestions![widget.questionID! + 1]
+                                        .createWidget(widget.listQuestions!,
+                                            widget.listAnswers!)));
+                          }
+                          break;
+                        default:
+                          {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => widget
+                                        .listQuestions![widget.next!]
+                                        .createWidget(widget.listQuestions!,
+                                            widget.listAnswers!)));
+                          }
+                          break;
+                      }
                     },
                     child: const Text("SUBMIT",
                         style: TextStyle(
@@ -97,32 +122,6 @@ class _TextQuestionState extends State<TextQuestion> {
                         )),
                   ),
                 ),
-                const SizedBox(height: 50.0),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(255, 0, 0, 0), width: 3),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(35.0))), //
-                  child: RawMaterialButton(
-                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const LogPage()));
-                    },
-                    child: const Text("Log out",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        )),
-                  ),
-                )
               ],
             ))));
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Log/log_page.dart';
+import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 
@@ -10,6 +11,7 @@ class MultipleChoiceQuestion extends StatefulWidget {
   final List<String> options;
   final int next;
   final List<Question>? listQuestions;
+  final List<Answer>? listAnswers;
 
   const MultipleChoiceQuestion({
     super.key,
@@ -18,6 +20,7 @@ class MultipleChoiceQuestion extends StatefulWidget {
     required this.options,
     required this.next,
     this.listQuestions,
+    this.listAnswers,
   });
 
   @override
@@ -85,6 +88,9 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                         borderRadius: BorderRadius.circular(17.0),
                       ),
                       onPressed: () async {
+                        List<Answer> tempListAnswers = widget.listAnswers!;
+                        tempListAnswers.add(Answer(mapAnswers, widget.questionID));
+
                         switch (widget.next) {
                           case -1:
                             {
@@ -92,8 +98,8 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                                   MaterialPageRoute(
                                       builder: (context) => widget
                                           .listQuestions!.last
-                                          .createWidget(
-                                              widget.listQuestions!)));
+                                          .createWidget(widget.listQuestions!,
+                                              widget.listAnswers!)));
                             }
                             break;
                           case 0:
@@ -102,8 +108,8 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                                   MaterialPageRoute(
                                       builder: (context) => widget
                                           .listQuestions![widget.questionID + 1]
-                                          .createWidget(
-                                              widget.listQuestions!)));
+                                          .createWidget(widget.listQuestions!,
+                                              widget.listAnswers!)));
                             }
                             break;
                           default:
@@ -112,8 +118,8 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                                   MaterialPageRoute(
                                       builder: (context) => widget
                                           .listQuestions![widget.next]
-                                          .createWidget(
-                                              widget.listQuestions!)));
+                                          .createWidget(widget.listQuestions!,
+                                              widget.listAnswers!)));
                             }
                             break;
                         }
@@ -125,33 +131,6 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                           )),
                     ),
                   ),
-                  const SizedBox(height: 50.0),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromRGBO(255, 0, 0, 0),
-                            width: 3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(35.0))), //
-                    child: RawMaterialButton(
-                      fillColor: const Color.fromRGBO(0, 53, 63, 1),
-                      elevation: 0.0,
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                      ),
-                      onPressed: () async {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const LogPage()));
-                      },
-                      child: const Text("Log out",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                          )),
-                    ),
-                  )
                 ]))));
   }
 }

@@ -15,7 +15,7 @@ import '../QuestionClasses/text_class.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 
 Future<List<Question>> readJsonFile(String filePath) async {
-  final String response = await rootBundle.loadString('assets/questions.json');
+  final String response = await rootBundle.loadString('assets/questions3.json');
   final data = json.decode(response);
 
   var questionsList = data['questions'];
@@ -95,24 +95,24 @@ Future<List<Question>> readJsonFile(String filePath) async {
   return list;
 }
 
-class Questionary extends StatefulWidget {
-  const Questionary({super.key});
+class Questionary3 extends StatefulWidget {
+  const Questionary3({super.key});
 
   @override
-  State<Questionary> createState() => _QuestionaryState();
+  State<Questionary3> createState() => _Questionary3State();
 }
 
-class _QuestionaryState extends State<Questionary> {
+class _Questionary3State extends State<Questionary3> {
   //Méthode initState
   final List<Question> questions = [];
   final List<Answer> answers = [];
 
-  QuestionaryDone finalAnswers = QuestionaryDone(index: '1', answer: []);
+  QuestionaryDone finalAnswers = QuestionaryDone(index: '3', answer: []);
 
   @override
   void initState() {
     super.initState();
-    readJsonFile('assets/questions.json').then((value) => setState(() {
+    readJsonFile('assets/questions3.json').then((value) => setState(() {
           questions.addAll(value);
         }));
   }

@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
+import '../Log/log_page.dart';
 import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
-import '../home_screen.dart';
+import '../end_of_quizz.dart';
 
-class DichotomicQuestion extends StatefulWidget {
+class TextSliderQuestion extends StatefulWidget {
   final String? question;
-  final int? questionID;
-  final List<String>? options;
-  final List<int>? next;
+  final int questionID;
+  final List<double> range;
+  final int next;
   final List<Question>? listQuestions;
   final List<Answer>? listAnswers;
 
-  const DichotomicQuestion({
-    super.key,
-    required this.question,
-    required this.questionID,
-    required this.options,
-    required this.next,
-    required this.listQuestions,
-    required this.listAnswers,
-  });
+  const TextSliderQuestion(
+      {super.key,
+      this.question,
+      required this.questionID,
+      required this.range,
+      required this.next,
+      this.listQuestions,
+      this.listAnswers});
 
   @override
-  State<DichotomicQuestion> createState() => _DichotomicQuestionState();
+  State<TextSliderQuestion> createState() => _TextSliderQuestionState();
 }
 
-class _DichotomicQuestionState extends State<DichotomicQuestion> {
-  var answer = "";
-  late int optionsIdx;
+class _TextSliderQuestionState extends State<TextSliderQuestion> {
+  late double _value;
+
+  @override
+  void initState() {
+    super.initState();
+    _value = widget.range[1];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +56,19 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 22.0),
-                    ...widget.options!
-                        .map((option) => [
-                              RadioListTile<String>(
-                                value: option,
-                                groupValue: answer,
-                                title: Text(option),
-                                onChanged: (v) => setState(() {
-                                  answer = v!;
-                                  optionsIdx = widget.options!.indexOf(option);
-                                }),
-                              )
-                            ])
-                        .expand((w) => w)
-                        .toList(),
+                    const SizedBox(height: 28.0),
+                    Slider(
+                      min: widget.range[0],
+                      max: widget.range[3],
+                      value: _value,
+                      divisions: widget.range[2].toInt(),
+                      label: '${_value.round()}',
+                      onChanged: (value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
+                    ),
                     const SizedBox(height: 22.0),
                     Container(
                       width: double.infinity,
@@ -74,7 +77,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                               color: const Color.fromRGBO(0, 53, 63, 1),
                               width: 2),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(20.0))), //
+                              const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
                         fillColor: const Color.fromRGBO(212, 111, 77, 1),
                         elevation: 0.0,
@@ -85,15 +88,16 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                         onPressed: () async {
                           List<Answer> tempListAnswers = widget.listAnswers!;
                           tempListAnswers
-                              .add(Answer(answer, widget.questionID!));
-
-                          switch (widget.next![optionsIdx]) {
+                              .add(Answer(_value, widget.questionID));
+                          switch (widget.next) {
                             case -1:
                               {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()));
+                                        builder: (context) => widget
+                                            .listQuestions!.last
+                                            .createWidget(widget.listQuestions!,
+                                                widget.listAnswers!)));
                               }
                               break;
                             case 0:
@@ -102,9 +106,9 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                     MaterialPageRoute(
                                         builder: (context) => widget
                                             .listQuestions![
-                                                widget.questionID! + 1]
+                                                widget.questionID + 1]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.listAnswers!)));
                               }
                               break;
                             default:
@@ -112,10 +116,9 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) => widget
-                                            .listQuestions![
-                                                widget.next![optionsIdx]]
+                                            .listQuestions![widget.next]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.listAnswers!)));
                               }
                               break;
                           }
