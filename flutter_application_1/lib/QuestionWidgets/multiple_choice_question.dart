@@ -49,7 +49,9 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                     child: Text(
                       widget.question!,
                       style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 40,
+                        color: Color.fromARGB(255, 0, 161, 172),
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -71,7 +73,6 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                               .toList(),
                         ),
                       )),
-                  const SizedBox(height: 22.0),
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -89,7 +90,8 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                       ),
                       onPressed: () async {
                         List<Answer> tempListAnswers = widget.listAnswers!;
-                        tempListAnswers.add(Answer(mapAnswers, widget.questionID));
+                        tempListAnswers
+                            .add(Answer(mapAnswers, widget.questionID));
 
                         switch (widget.next) {
                           case -1:
@@ -131,6 +133,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                           )),
                     ),
                   ),
+                  const SizedBox(height: 200.0),
                 ]))));
   }
 }

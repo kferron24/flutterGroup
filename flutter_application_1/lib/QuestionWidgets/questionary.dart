@@ -107,7 +107,7 @@ class _QuestionaryState extends State<Questionary> {
   final List<Question> questions = [];
   final List<Answer> answers = [];
 
-  QuestionaryDone finalAnswers = QuestionaryDone(index: '1', answer: []);
+  QuestionaryDone questionaryDone = QuestionaryDone(index: '1', answer: []);
 
   @override
   void initState() {

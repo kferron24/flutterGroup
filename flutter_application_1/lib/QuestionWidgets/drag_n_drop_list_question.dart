@@ -48,37 +48,37 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 20.0),
                     Text(
                       widget.question!,
                       style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 25.0,
+                        color: Color.fromARGB(255, 0, 161, 172),
+                        fontSize: 40.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 22.0),
                     Container(
-                      height: 56*options.length.toDouble(),
+                        height: 56 * options.length.toDouble(),
                         child: ReorderableListView.builder(
-                      itemCount: options.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          key: Key('$index'),
-                          title: Text(options[index]),
-                          tileColor: index.isOdd ? oddItemColor : evenItemColor,
-                        );
-                      },
-                      onReorder: (int oldIndex, int newIndex) {
-                        setState(() {
-                          if (newIndex > oldIndex) {
-                            newIndex -= 1;
-                          }
-                          final items = options.removeAt(oldIndex);
-                          options.insert(newIndex, items);
-                        });
-                      },
-                    )),
+                          itemCount: options.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              key: Key('$index'),
+                              title: Text(options[index]),
+                              tileColor:
+                                  index.isOdd ? oddItemColor : evenItemColor,
+                            );
+                          },
+                          onReorder: (int oldIndex, int newIndex) {
+                            setState(() {
+                              if (newIndex > oldIndex) {
+                                newIndex -= 1;
+                              }
+                              final items = options.removeAt(oldIndex);
+                              options.insert(newIndex, items);
+                            });
+                          },
+                        )),
                     const SizedBox(height: 22.0),
                     Container(
                       width: double.infinity,

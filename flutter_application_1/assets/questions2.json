@@ -25,7 +25,7 @@
         {
             "type":"DRAG_N_DROP_LIST",
             "id":3,
-            "text": "Donnez une note",
+            "text": "Rank these options",
             "options":["ferrari","Porsh","Bugatti","Fiat","Bmw"],
             "next":4
         },

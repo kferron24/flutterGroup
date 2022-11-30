@@ -24,7 +24,7 @@
         {
             "type":"DRAG_N_DROP_LIST",
             "id":3,
-            "text": "Classez ces options",
+            "text": "Rank these options",
             "options":["Basketball","Soccer","Tenis","Table tenis","hockey"],
             "next":4
         },

@@ -26,7 +26,7 @@
         {
             "type":"DRAG_N_DROP_LIST",
             "id":3,
-            "text": "Classez ces options",
+            "text": "Rank these options",
             "options":["Harry Potter","Superman","Spiderman","Inception","Shutter Island"],
             "next":4
         },
