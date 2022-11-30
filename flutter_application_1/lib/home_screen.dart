@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const Questionary2()));
+                                  builder: (context) => const Questionary()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: FutureBuilder(
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const Questionary()));
+                                  builder: (context) => const Questionary2()));
                         }, // Image tapped
                         splashColor: Colors.white10, // Splash color over image
                         child: FutureBuilder(
