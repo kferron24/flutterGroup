@@ -1,4 +1,6 @@
 {
+    "questionary_name": "Sport questionary",
+    "image_url": "https://img.freepik.com/vecteurs-libre/concept-equipement-sport_1284-13034.jpg?w=2000",
     "questions":[
         {
             "type":"DICHOTOMIC",

@@ -1,6 +1,7 @@
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Log/log_page.dart';
-import 'dart:convert';
 import 'storage/storage.dart';
 
 import 'package:flutter_application_1/QuestionWidgets/questionary.dart';
@@ -192,11 +193,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(32.0),
                     ),
-                    onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const LogPage()));
-                    },
-                    child: const Text("Log out",
+                    onPressed:()=> importJson(),
+                    child: const Text("Import a questionary",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,
@@ -205,5 +203,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ))));
+  }
+}
+
+importJson() async {
+  FilePickerResult? result = await FilePicker.platform.pickFiles(type:FileType.any,allowMultiple: false);
+
+  if (result != null) {
+    File file = File(result.files.single.path!);
+    String str = file.readAsStringSync();
+    print(str);
+  } else {
+    // User canceled the picker
   }
 }
