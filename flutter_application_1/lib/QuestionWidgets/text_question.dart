@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Log/log_page.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionClasses/answer.dart';
+import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 
@@ -9,7 +11,7 @@ class TextQuestion extends StatefulWidget {
   final int? questionID;
   final int? next;
   final List<Question>? listQuestions;
-  final List<Answer>? listAnswers;
+  final QuestionaryDone questionarydone;
 
   const TextQuestion({
     super.key,
@@ -17,7 +19,7 @@ class TextQuestion extends StatefulWidget {
     required this.questionID,
     required this.next,
     required this.listQuestions,
-    this.listAnswers,
+    required this.questionarydone,
   });
 
   @override
@@ -79,8 +81,10 @@ class _TextQuestionState extends State<TextQuestion> {
                       borderRadius: BorderRadius.circular(17.0),
                     ),
                     onPressed: () async {
-                      List<Answer> tempListAnswers = widget.listAnswers!;
-                      tempListAnswers.add(Answer(_answer, widget.questionID!));
+                      QuestionaryAnswer answered = QuestionaryAnswer(
+                          widget.questionID.toString(), _answer);
+
+                      widget.questionarydone.answer.add(answered);
 
                       switch (widget.next) {
                         case -1:
@@ -90,7 +94,7 @@ class _TextQuestionState extends State<TextQuestion> {
                                     builder: (context) =>
                                         widget.listQuestions!.last.createWidget(
                                             widget.listQuestions!,
-                                            widget.listAnswers!)));
+                                            widget.questionarydone)));
                           }
                           break;
                         case 0:
@@ -100,7 +104,7 @@ class _TextQuestionState extends State<TextQuestion> {
                                     builder: (context) => widget
                                         .listQuestions![widget.questionID! + 1]
                                         .createWidget(widget.listQuestions!,
-                                            widget.listAnswers!)));
+                                            widget.questionarydone)));
                           }
                           break;
                         default:
@@ -110,7 +114,7 @@ class _TextQuestionState extends State<TextQuestion> {
                                     builder: (context) => widget
                                         .listQuestions![widget.next!]
                                         .createWidget(widget.listQuestions!,
-                                            widget.listAnswers!)));
+                                            widget.questionarydone)));
                           }
                           break;
                       }

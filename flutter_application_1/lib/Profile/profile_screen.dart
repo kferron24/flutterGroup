@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/Profile/questionary_widget.dart';
 import 'package:flutter_application_1/components/title_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../components/appbar.dart';
-import 'QuestionaryDone/questionary_answer.dart';
+import '../firebase/firestore_profile.dart';
 import 'QuestionaryDone/questionary_done.dart';
-import 'firestore_questionary.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

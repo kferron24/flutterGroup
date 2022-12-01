@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/QuestionWidgets/star_rating_question.dart';
 
 import '../QuestionWidgets/dichotomic_question.dart';
@@ -25,14 +26,15 @@ class StarRatingClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
+  StatefulWidget createWidget(
+      List<Question> questions, QuestionaryDone questionarydone) {
     return StarRatingQuestion(
         question: text,
         questionID: id!,
         range: _range!,
         next: _next!,
         listQuestions: questions,
-        listAnswers: answers);
+        questionarydone: questionarydone);
   }
 
   @override

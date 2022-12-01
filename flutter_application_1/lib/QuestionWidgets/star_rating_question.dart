@@ -1,10 +1,12 @@
-import 'package:flutter_application_1/QuestionClasses/answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/firebase/firestore_profile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import '../home_screen.dart';
 
 class StarRatingQuestion extends StatefulWidget {
   final String? question;
@@ -12,7 +14,7 @@ class StarRatingQuestion extends StatefulWidget {
   final List<int> range;
   final int next;
   final List<Question>? listQuestions;
-  final List<Answer>? listAnswers;
+  final QuestionaryDone questionarydone;
 
   const StarRatingQuestion(
       {super.key,
@@ -21,7 +23,7 @@ class StarRatingQuestion extends StatefulWidget {
       required this.range,
       required this.next,
       this.listQuestions,
-      this.listAnswers});
+      required this.questionarydone});
 
   @override
   State<StarRatingQuestion> createState() => _StarRatingQuestionState();
@@ -38,6 +40,10 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    // final questionaryDone = QuestionaryDone(index: "3", answer: [
+    //   QuestionaryAnswer("1", "Je m'appelle Alex"),
+    //   QuestionaryAnswer("2", "Bonjour Alex")
+    // ]);
     return Scaffold(
         appBar: const CustomAppBar(type: 'Profile'),
         body: Center(
@@ -88,18 +94,23 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          List<Answer> tempListAnswers = widget.listAnswers!;
-                          tempListAnswers
-                              .add(Answer(rating, widget.questionID));
+                          QuestionaryAnswer answered = QuestionaryAnswer(
+                              widget.questionID.toString(), rating.toString());
+
+                          widget.questionarydone.answer.add(answered);
                           switch (widget.next) {
                             case -1:
                               {
+                                await setQuestionaryDone(
+                                    questionaryDone: widget.questionarydone);
+                                // ignore: use_build_context_synchronously
+                                // updateQuest(
+                                //     context: context, answer: tempListAnswers);
+                                // ignore: use_build_context_synchronously
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) => widget
-                                            .listQuestions!.last
-                                            .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                        builder: (context) =>
+                                            const HomeScreen()));
                               }
                               break;
                             case 0:
@@ -110,7 +121,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                                             .listQuestions![
                                                 widget.questionID + 1]
                                             .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                                widget.questionarydone)));
                               }
                               break;
                             default:
@@ -120,7 +131,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                                         builder: (context) => widget
                                             .listQuestions![widget.next]
                                             .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                                widget.questionarydone)));
                               }
                               break;
                           }
