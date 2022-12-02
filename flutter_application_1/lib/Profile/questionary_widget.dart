@@ -15,13 +15,13 @@ class QuestionaryAnswered extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: const [
+          children: [
             Expanded(
               flex: 5, // 60% of space => (6/(6 + 4))
               child: Text(
-                "Questionary answer:",
+                "Questionaries answered:",
                 style: TextStyle(
-                  color: Color.fromRGBO(67, 12, 5, 1),
+                  color: Theme.of(context).primaryColor,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -35,8 +35,8 @@ class QuestionaryAnswered extends StatelessWidget {
                   margin: const EdgeInsets.all(32),
                   child: Text(
                     "Questionary ${questionary.index}",
-                    style: const TextStyle(
-                      color: Color.fromRGBO(212, 111, 77, 1),
+                    style: TextStyle(
+                      color: Theme.of(context).secondaryHeaderColor,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),

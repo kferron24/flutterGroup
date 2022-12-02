@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new
 
 import 'package:flutter/material.dart';
-import '../QuestionClasses/answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/home_screen.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -12,7 +14,7 @@ class DichotomicQuestion extends StatefulWidget {
   final List<String>? options;
   final List<int>? next;
   final List<Question>? listQuestions;
-  final List<Answer>? listAnswers;
+  final QuestionaryDone questionarydone;
 
   const DichotomicQuestion({
     super.key,
@@ -21,7 +23,7 @@ class DichotomicQuestion extends StatefulWidget {
     required this.options,
     required this.next,
     required this.listQuestions,
-    required this.listAnswers,
+    required this.questionarydone,
   });
 
   @override
@@ -73,31 +75,29 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
+                              color: Theme.of(context).primaryColorDark,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))), //
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          List<Answer> tempListAnswers = widget.listAnswers!;
-                          tempListAnswers
-                              .add(Answer(answer, widget.questionID!));
+                          QuestionaryAnswer answered = QuestionaryAnswer(
+                              widget.questionID.toString(), answer);
 
+                          widget.questionarydone.answer.add(answered);
                           switch (widget.next![optionsIdx]) {
                             case -1:
                               {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) => widget
-                                            .listQuestions!.last
-                                            .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                        builder: (context) =>
+                                            const HomeScreen()));
                               }
                               break;
                             case 0:
@@ -108,7 +108,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                             .listQuestions![
                                                 widget.questionID! + 1]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.questionarydone)));
                               }
                               break;
                             default:
@@ -119,7 +119,7 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                                             .listQuestions![
                                                 widget.next![optionsIdx]]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.questionarydone)));
                               }
                               break;
                           }

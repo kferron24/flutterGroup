@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/QuestionClasses/answer.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 
-import '../Log/log_page.dart';
+import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import '../home_screen.dart';
 
 class DragNDropListQuestion extends StatefulWidget {
   final String? question;
@@ -12,7 +13,7 @@ class DragNDropListQuestion extends StatefulWidget {
   final List<String>? options;
   final int next;
   final List<Question>? listQuestions;
-  final List<Answer>? listAnswers;
+  final QuestionaryDone questionarydone;
 
   const DragNDropListQuestion(
       {super.key,
@@ -20,8 +21,8 @@ class DragNDropListQuestion extends StatefulWidget {
       required this.questionID,
       required this.options,
       required this.next,
-      this.listQuestions,
-      this.listAnswers});
+      required this.listQuestions,
+      required this.questionarydone});
 
   @override
   State<DragNDropListQuestion> createState() => _DragNDropListQuestionState();
@@ -86,31 +87,32 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
+                              color: Theme.of(context).primaryColorDark,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))), //
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          List<Answer> tempListAnswers = widget.listAnswers!;
-                          tempListAnswers
-                              .add(Answer(options, widget.questionID));
+                          QuestionaryAnswer answered = QuestionaryAnswer(
+                              widget.questionID.toString(),
+                              widget.options.toString());
 
+                          widget.questionarydone.answer.add(answered);
                           switch (widget.next) {
                             case -1:
                               {
+                                // updateQuest(
+                                //     context: context, answer: widget.options.toString());
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) => widget
-                                            .listQuestions!.last
-                                            .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                        builder: (context) =>
+                                            const HomeScreen()));
                               }
                               break;
                             case 0:
@@ -121,7 +123,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                             .listQuestions![
                                                 widget.questionID + 1]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.questionarydone)));
                               }
                               break;
                             default:
@@ -131,7 +133,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                                         builder: (context) => widget
                                             .listQuestions![widget.next]
                                             .createWidget(widget.listQuestions!,
-                                                tempListAnswers)));
+                                                widget.questionarydone)));
                               }
                               break;
                           }

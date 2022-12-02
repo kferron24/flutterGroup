@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/Profile/questionary_widget.dart';
 import 'package:flutter_application_1/components/title_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../components/appbar.dart';
-import 'QuestionaryDone/questionary_answer.dart';
+import '../firebase/firestore_profile.dart';
 import 'QuestionaryDone/questionary_done.dart';
-import 'firestore_questionary.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -36,13 +33,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
         appBar: const CustomAppBar(type: "Login"),
         body: Container(
-            margin: const EdgeInsets.all(32),
+            margin: const EdgeInsets.fromLTRB(32, 0, 32, 0),
             child: SingleChildScrollView(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                  const TitleText(title: "Profile Screen"),
+                  const Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: TitleText(title: "Profile Screen"),),
                   Container(
                     margin: const EdgeInsets.only(bottom: 16),
                     child: Row(
@@ -63,8 +62,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               flex: 10, // 40% of space
                               child: Text(
                                 userMail,
-                                style: const TextStyle(
-                                  color: Color.fromRGBO(212, 111, 77, 1),
+                                style: TextStyle(
+                                  color: Theme.of(context).secondaryHeaderColor,
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -74,7 +73,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   (questionaryDone.isEmpty)
                       ? const Text(
                           "Vous n'avez pas répondu à un seul questionnaire")
-                      : QuestionaryAnswered(questionaryDone: questionaryDone)
+                      : QuestionaryAnswered(questionaryDone: questionaryDone),
+                    const SizedBox(height: 22.0),
                 ]))));
   }
 }

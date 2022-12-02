@@ -122,9 +122,11 @@ class _Questionary3State extends State<Questionary3> {
 
   @override
   Widget build(BuildContext context) {
+    QuestionaryDone questionarydone =
+        QuestionaryDone(id: '0', index: '1', answer: []);
     //return FutureBuilder(future: readJsonFile('assets/questions.json'),builder: ((context, snapshot) =>  questions[0].createWidget(questions)));
     return questions.isEmpty
         ? const Text("Loading questionary...")
-        : questions[0].createWidget(questions, answers);
+        : questions[0].createWidget(questions, questionarydone);
   }
 }

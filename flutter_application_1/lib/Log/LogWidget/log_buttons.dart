@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../components/snackbar.dart';
+import '../../firebase/firebase_log.dart';
 import '../../home_screen.dart';
-import '../firebase_log.dart';
 
 class LogButtons extends StatelessWidget {
   final TextEditingController emailController;
@@ -23,7 +23,7 @@ class LogButtons extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: RawMaterialButton(
-            fillColor: const Color.fromRGBO(212, 111, 77, 1),
+            fillColor: Theme.of(context).secondaryHeaderColor,
             elevation: 0.0,
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             shape: RoundedRectangleBorder(
@@ -54,7 +54,7 @@ class LogButtons extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: RawMaterialButton(
-            fillColor: const Color.fromRGBO(0, 53, 63, 1),
+            fillColor: Theme.of(context).primaryColorDark,
             elevation: 0.0,
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             shape: RoundedRectangleBorder(

@@ -1,3 +1,5 @@
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+
 import '../QuestionWidgets/dichotomic_question.dart';
 import 'answer.dart';
 import 'question.dart';
@@ -24,14 +26,15 @@ class DichotomicClass extends Question {
   }
 
   @override
-  StatefulWidget createWidget(List<Question> questions, List<Answer> answers) {
+  StatefulWidget createWidget(
+      List<Question> questions, QuestionaryDone questionaryDone) {
     return DichotomicQuestion(
         question: text,
         questionID: id!,
         options: _options!,
         next: _next!,
         listQuestions: questions,
-        listAnswers: answers);
+        questionarydone: questionaryDone);
   }
 
   @override

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import '../Log/log_page.dart';
+import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
@@ -11,7 +13,7 @@ class TextSliderQuestion extends StatefulWidget {
   final List<double> range;
   final int next;
   final List<Question>? listQuestions;
-  final List<Answer>? listAnswers;
+  final QuestionaryDone questionarydone;
 
   const TextSliderQuestion(
       {super.key,
@@ -20,7 +22,7 @@ class TextSliderQuestion extends StatefulWidget {
       required this.range,
       required this.next,
       this.listQuestions,
-      this.listAnswers});
+      required this.questionarydone});
 
   @override
   State<TextSliderQuestion> createState() => _TextSliderQuestionState();
@@ -79,16 +81,17 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(17.0),
                         ),
                         onPressed: () async {
-                          List<Answer> tempListAnswers = widget.listAnswers!;
-                          tempListAnswers
-                              .add(Answer(_value, widget.questionID));
+                          QuestionaryAnswer answered = QuestionaryAnswer(
+                              widget.questionID.toString(), _value.toString());
+
+                          widget.questionarydone.answer.add(answered);
                           switch (widget.next) {
                             case -1:
                               {
@@ -97,7 +100,7 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                                         builder: (context) => widget
                                             .listQuestions!.last
                                             .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                                widget.questionarydone)));
                               }
                               break;
                             case 0:
@@ -108,7 +111,7 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                                             .listQuestions![
                                                 widget.questionID + 1]
                                             .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                                widget.questionarydone)));
                               }
                               break;
                             default:
@@ -118,7 +121,7 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                                         builder: (context) => widget
                                             .listQuestions![widget.next]
                                             .createWidget(widget.listQuestions!,
-                                                widget.listAnswers!)));
+                                                widget.questionarydone)));
                               }
                               break;
                           }

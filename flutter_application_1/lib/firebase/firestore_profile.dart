@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'QuestionaryDone/questionary_answer.dart';
-import 'QuestionaryDone/questionary_done.dart';
+import '../Profile/QuestionaryDone/questionary_answer.dart';
+import '../Profile/QuestionaryDone/questionary_done.dart';
 
 Future<List<QuestionaryDone>> getQuestionaryDone() async {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -36,6 +36,32 @@ Future<List<QuestionaryDone>> getQuestionaryDone() async {
   }
 
   return questions;
+}
+
+Future setQuestionaryDone({required QuestionaryDone questionaryDone}) async {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String uid = auth.currentUser!.uid.toString();
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  DocumentReference questionaryDoneRef =
+      users.doc(uid).collection("questionaryDone").doc();
+  String questionaryId = questionaryDoneRef.id;
+  await FirebaseFirestore.instance
+      .collection('users')
+      .doc(uid)
+      .collection("questionaryDone")
+      .doc(questionaryId)
+      .set({"id": questionaryId, "index": questionaryDone.index});
+
+  for (QuestionaryAnswer answer in questionaryDone.answer) {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection("questionaryDone")
+        .doc(questionaryId)
+        .collection("answer")
+        .doc()
+        .set({"index": answer.index, "msg": answer.msg});
+  }
 }
 
 Future getuserMail() async {
