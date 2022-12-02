@@ -12,7 +12,7 @@ class ProfileButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 5.0, left: 5.0),
       child: RawMaterialButton(
-          fillColor: const Color.fromRGBO(67, 12, 5, 1),
+          fillColor: Theme.of(context).primaryColor,
           elevation: 0.0,
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           shape: RoundedRectangleBorder(

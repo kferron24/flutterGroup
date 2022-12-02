@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
           ),
           sliderTheme: const SliderThemeData(
             thumbColor:Color.fromRGBO(67, 12, 5, 1),
-            overlayColor: Color.fromRGBO(67, 12, 5, 1),
+            overlayColor: Color.fromRGBO(67, 12, 5, 200),
             activeTrackColor: Color.fromRGBO(67, 12, 5, 1),
             inactiveTrackColor: Color.fromRGBO(67, 12, 5, 200),
             inactiveTickMarkColor: Color.fromRGBO(67, 12, 5, 1),

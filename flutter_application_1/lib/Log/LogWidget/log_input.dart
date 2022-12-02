@@ -16,11 +16,11 @@ class LogInputs extends StatelessWidget {
       TextField(
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           hintText: "User Email",
           prefixIcon: Icon(
             Icons.mail,
-            color: Color.fromRGBO(67, 12, 5, 1),
+            color: Theme.of(context).primaryColor,
           ),
         ),
       ),
@@ -33,19 +33,19 @@ class LogInputs extends StatelessWidget {
         ),
         controller: passwordController,
         obscureText: true,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           hintText: "User Password",
           prefixIcon: Icon(
             Icons.lock,
-            color: Color.fromRGBO(67, 12, 5, 1),
+            color: Theme.of(context).primaryColor,
           ),
         ),
       ),
       const SizedBox(height: 15.0),
-      const Text(
+      Text(
         "Don't remember your password",
         style: TextStyle(
-          color: Color.fromRGBO(0, 53, 63, 1),
+          color: Theme.of(context).primaryColorDark,
         ),
       ),
     ]);

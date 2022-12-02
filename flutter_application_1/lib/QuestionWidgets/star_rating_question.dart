@@ -84,7 +84,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: Theme.of(context).primaryColorDark,
+                              color: Theme.of(context).primaryColor,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))),
