@@ -11,6 +11,7 @@ import 'package:flutter_application_1/QuestionClasses/star_rating_class.dart';
 import '../QuestionClasses/dichotomic_class.dart';
 import '../QuestionClasses/multiple_choice_class.dart';
 import '../QuestionClasses/question.dart';
+import '../QuestionClasses/slider_class.dart';
 import '../QuestionClasses/text_class.dart';
 
 Future<List<Question>> readJsonFile(String filePath) async {
@@ -77,6 +78,18 @@ Future<List<Question>> readJsonFile(String filePath) async {
           list.add(multip);
         }
         break;
+      case "TEXT_SLIDER":
+        {
+          List<double> range = [];
+          for (int option in question['range']) {
+            range.add(option.toDouble());
+          }
+          int next = question['next'];
+          var slider =
+              TextSliderClass(question['text'], question['id'], range, next);
+          list.add(slider);
+        }
+        break;
     }
   }
   return list;
@@ -93,6 +106,8 @@ class _QuestionaryState extends State<Questionary> {
   //Méthode initState
   final List<Question> questions = [];
   final List<Answer> answers = [];
+
+  QuestionaryDone questionaryDone = QuestionaryDone(index: '1', answer: []);
 
   @override
   void initState() {

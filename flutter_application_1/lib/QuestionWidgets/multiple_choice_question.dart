@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/components/percent_disk.dart';
 
 import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import '../home_screen.dart';
 
 class MultipleChoiceQuestion extends StatefulWidget {
@@ -50,12 +52,14 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                     child: Text(
                       widget.question!,
                       style: const TextStyle(
-                        fontSize: 20,
+                        color: Colors.black,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  Expanded(
-                      flex: 1,
+                  Container(
+                      height: 56 * widget.options.length.toDouble(),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
                         child: Column(
@@ -72,17 +76,16 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                               .toList(),
                         ),
                       )),
-                  const SizedBox(height: 22.0),
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: const Color.fromRGBO(0, 53, 63, 1),
+                            color: Theme.of(context).primaryColorDark,
                             width: 2),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20.0))), //
                     child: RawMaterialButton(
-                      fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                      fillColor: Theme.of(context).secondaryHeaderColor,
                       elevation: 0.0,
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       shape: RoundedRectangleBorder(
@@ -135,6 +138,9 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                           )),
                     ),
                   ),
+                  const SizedBox(height: 40.0),
+                  PercentDisk(
+                      value: widget.questionID / widget.listQuestions!.length),
                 ]))));
   }
 }

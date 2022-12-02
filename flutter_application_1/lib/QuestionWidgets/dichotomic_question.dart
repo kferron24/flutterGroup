@@ -1,9 +1,14 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_new
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
 import 'package:flutter_application_1/home_screen.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+
+import '../components/percent_disk.dart';
 
 class DichotomicQuestion extends StatefulWidget {
   final String? question;
@@ -72,12 +77,12 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
+                              color: Theme.of(context).primaryColorDark,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))), //
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
@@ -128,6 +133,10 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                             )),
                       ),
                     ),
+                    const SizedBox(height: 40.0),
+                    PercentDisk(
+                        value:
+                            widget.questionID! / widget.listQuestions!.length),
                   ],
                 )))));
   }

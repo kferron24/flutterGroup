@@ -4,6 +4,8 @@ import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.d
 import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import '../components/percent_disk.dart';
 import '../home_screen.dart';
 
 class DragNDropListQuestion extends StatefulWidget {
@@ -49,7 +51,6 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 20.0),
                     Text(
                       widget.question!,
                       style: const TextStyle(
@@ -87,12 +88,12 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
+                              color: Theme.of(context).primaryColorDark,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))), //
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
@@ -145,6 +146,10 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                             )),
                       ),
                     ),
+                    const SizedBox(height: 40.0),
+                    PercentDisk(
+                        value:
+                            widget.questionID / widget.listQuestions!.length),
                   ],
                 ))));
   }

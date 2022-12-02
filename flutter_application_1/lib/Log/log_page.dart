@@ -23,8 +23,7 @@ class _LogPageState extends State<LogPage> {
         ),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
-            child: SingleChildScrollView(
-                child: Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -36,6 +35,6 @@ class _LogPageState extends State<LogPage> {
                     emailController: emailController,
                     passwordController: passwordController)
               ],
-            ))));
+            )));
   }
 }

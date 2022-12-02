@@ -5,6 +5,7 @@ import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import '../components/percent_disk.dart';
 import '../end_of_quizz.dart';
 
 class TextSliderQuestion extends StatefulWidget {
@@ -81,7 +82,7 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
@@ -133,6 +134,10 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                             )),
                       ),
                     ),
+                    const SizedBox(height: 40.0),
+                    PercentDisk(
+                        value:
+                            widget.questionID / widget.listQuestions!.length),
                   ],
                 )))));
   }

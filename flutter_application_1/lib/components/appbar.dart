@@ -26,10 +26,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
         children: [
           Container(
             margin: const EdgeInsets.only(right: 5.0, left: 5.0),
-            child: const Text(
+            child: Text(
               'QUIZZ',
               style:
-                  TextStyle(color: Color.fromRGBO(67, 12, 5, 1), fontSize: 32),
+                  TextStyle(color: Theme.of(context).primaryColor, fontSize: 32),
             ),
           ),
           Row(
@@ -40,7 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           )
         ],
       ),
-      backgroundColor: const Color.fromRGBO(212, 111, 77, 1),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
     );
   }
 }

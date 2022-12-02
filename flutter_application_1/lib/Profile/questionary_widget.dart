@@ -14,10 +14,10 @@ class QuestionaryAnswered extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-          "Questionary answers:",
+        Text(
+          "Questionaries answers:",
           style: TextStyle(
-            color: Color.fromRGBO(67, 12, 5, 1),
+            color: Theme.of(context).primaryColor,
             fontSize: 25.0,
             fontWeight: FontWeight.bold,
           ),
@@ -30,8 +30,8 @@ class QuestionaryAnswered extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(vertical: 16),
                       child: Text(
                         "Questionary ${questionary.index}",
-                        style: const TextStyle(
-                          color: Color.fromRGBO(212, 111, 77, 1),
+                        style: TextStyle(
+                          color: Theme.of(context).secondaryHeaderColor,
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),

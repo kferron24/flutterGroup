@@ -1,8 +1,10 @@
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/components/percent_disk.dart';
 import 'package:flutter_application_1/firebase/firestore_profile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
@@ -69,25 +71,26 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                       minRating: widget.range[0].toDouble(),
                       direction: Axis.horizontal,
                       allowHalfRating: true,
+                      glowColor: Theme.of(context).primaryColorLight,
+                      glow: false,
                       itemCount: widget.range[2],
                       itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => const Icon(
+                      itemBuilder: (context, _) => Icon(
                         Icons.star,
-                        color: Colors.blue,
+                        color: Theme.of(context).primaryColor,
                       ),
                       onRatingUpdate: (rating) {},
                     ),
-                    const SizedBox(height: 22.0),
+                    const SizedBox(height: 30.0),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
-                              width: 2),
+                              color: Theme.of(context).primaryColor, width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
@@ -143,6 +146,8 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                             )),
                       ),
                     ),
+                    const SizedBox(height: 40.0),
+                    PercentDisk(value: widget.questionID / widget.listQuestions!.length)
                   ],
                 )))));
   }

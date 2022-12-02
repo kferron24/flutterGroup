@@ -33,13 +33,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
         appBar: const CustomAppBar(type: "Login"),
         body: Container(
-            margin: const EdgeInsets.all(32),
+            margin: const EdgeInsets.fromLTRB(32, 0, 32, 0),
             child: SingleChildScrollView(
                 child: Column(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                  const TitleText(title: "Profile Screen"),
+                  const Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: TitleText(title: "Your profile"),),
                   Container(
                     margin: const EdgeInsets.only(bottom: 16),
                     child: Row(
@@ -60,8 +62,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               flex: 10,
                               child: Text(
                                 userMail,
-                                style: const TextStyle(
-                                  color: Color.fromRGBO(212, 111, 77, 1),
+                                style: TextStyle(
+                                  color: Theme.of(context).secondaryHeaderColor,
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -71,7 +73,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   (questionaryDone.isEmpty)
                       ? const Text(
                           "Vous n'avez pas répondu à un seul questionnaire")
-                      : QuestionaryAnswered(questionaryDone: questionaryDone)
+                      : QuestionaryAnswered(questionaryDone: questionaryDone),
+                    const SizedBox(height: 22.0),
                 ]))));
   }
 }

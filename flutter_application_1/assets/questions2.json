@@ -1,40 +1,48 @@
-{   "questionary_id":2,
-    "questionary_name":"Questionaire 2",
-    "questions":[
-        {
-            "type":"DICHOTOMIC",
-            "id":0,
-            "text": "DO YOU LIKE CARS",
-            "options":["YES","NO"],
-            "next":[0,-1]
-        },        
-        {
-            "type":"TEXT",
-            "id":1,
-            "text": "What is your favourite car?",
-            "options":["Paris","New York"],
-            "next":2
-        },        
-        {
-            "type":"MULTIPLECHOICE",
-            "id":2,
-            "text": "What car brands do you like ?",
-            "options":["ferrari","Porsh","Bugatti","Fiat"],
-            "next":3
-        },
-        {
-            "type":"DRAG_N_DROP_LIST",
-            "id":3,
-            "text": "Donnez une note",
-            "options":["ferrari","Porsh","Bugatti","Fiat","Bmw"],
-            "next":4
-        },
-        {
-            "type":"STAR_RATING",
-            "id":4,
-            "text": "How would you rate this quizz?",
-            "range":[0,3,5],
-            "next":-1
-        }
-    ]
+{
+  "questionary_name": "Car questionary",
+  "image_url": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2Fyc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+  "questions": [
+    {
+      "type": "DICHOTOMIC",
+      "id": 0,
+      "text": "DO YOU LIKE CARS",
+      "options": ["YES", "NO"],
+      "next": [0, -1]
+    },
+    {
+      "type": "TEXT",
+      "id": 1,
+      "text": "What is your favourite car?",
+      "options": ["Paris", "New York"],
+      "next": 2
+    },
+    {
+      "type": "MULTIPLECHOICE",
+      "id": 2,
+      "text": "What car brands do you like ?",
+      "options": ["ferrari", "Porsh", "Bugatti", "Fiat"],
+      "next": 3
+    },
+    {
+      "type": "DRAG_N_DROP_LIST",
+      "id": 3,
+      "text": "Donnez une note",
+      "options": ["Ferrari", "Porsch", "Bugatti", "Fiat", "BMW"],
+      "next": 4
+    },
+    {
+      "type": "TEXT_SLIDER",
+      "id": 4,
+      "text": "How would you rate this quizz?",
+      "range": [0, 5, 10, 10],
+      "next": -1
+    },
+    {
+      "type": "STAR_RATING",
+      "id": 5,
+      "text": "How would you rate this quizz?",
+      "range": [0, 3, 5],
+      "next": -1
+    }
+  ]
 }

@@ -14,8 +14,8 @@ class TitleText extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 32),
       child: Text(
         title,
-        style: const TextStyle(
-          color: Color.fromRGBO(0, 53, 63, 1),
+        style: TextStyle(
+          color: Theme.of(context).primaryColorDark,
           fontSize: 50.0,
           fontWeight: FontWeight.bold,
         ),
