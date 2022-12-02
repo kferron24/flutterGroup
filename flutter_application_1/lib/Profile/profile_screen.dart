@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             margin: const EdgeInsets.all(32),
             child: SingleChildScrollView(
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                   const TitleText(title: "Profile Screen"),
@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           const Expanded(
-                            flex: 5, // 60% of space => (6/(6 + 4))
+                            flex: 5,
                             child: Text(
                               "Email:",
                               style: TextStyle(
@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           Expanded(
-                              flex: 10, // 40% of space
+                              flex: 10,
                               child: Text(
                                 userMail,
                                 style: const TextStyle(
