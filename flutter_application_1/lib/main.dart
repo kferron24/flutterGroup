@@ -19,15 +19,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _title,
       debugShowCheckedModeBanner: false,
-      
       theme: ThemeData(
-        primaryColor: const Color.fromRGBO(67, 12, 5, 1),
-        secondaryHeaderColor:const Color.fromRGBO(212, 111, 77, 1),
-        primaryColorLight: Color.fromARGB(255, 0, 161, 172),
-        primaryColorDark: const Color.fromRGBO(0, 53, 63, 1),
+          primaryColor: const Color.fromRGBO(67, 12, 5, 1),
+          secondaryHeaderColor: const Color.fromRGBO(212, 111, 77, 1),
+          primaryColorLight: const Color.fromARGB(255, 0, 161, 172),
+          primaryColorDark: const Color.fromRGBO(0, 53, 63, 1),
           scaffoldBackgroundColor: const Color.fromRGBO(255, 191, 102, 1),
           textSelectionTheme: const TextSelectionThemeData(
-              cursorColor: Color.fromRGBO(67, 12, 5, 1),
+            cursorColor: Color.fromRGBO(67, 12, 5, 1),
           ),
           switchTheme: SwitchThemeData(
             thumbColor: MaterialStateProperty.resolveWith<Color?>(
@@ -70,7 +69,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           sliderTheme: const SliderThemeData(
-            thumbColor:Color.fromRGBO(67, 12, 5, 1),
+            thumbColor: Color.fromRGBO(67, 12, 5, 1),
             overlayColor: Color.fromRGBO(67, 12, 5, 200),
             activeTrackColor: Color.fromRGBO(67, 12, 5, 1),
             inactiveTrackColor: Color.fromRGBO(67, 12, 5, 200),

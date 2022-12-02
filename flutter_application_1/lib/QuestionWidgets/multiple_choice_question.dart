@@ -5,7 +5,6 @@ import 'package:flutter_application_1/components/percent_disk.dart';
 import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import '../home_screen.dart';
 
 class MultipleChoiceQuestion extends StatefulWidget {
@@ -46,22 +45,22 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
         body: Center(
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Column(children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      widget.question!,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          widget.question!,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Container(
-                      height: 56 * widget.options.length.toDouble(),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
+                      SizedBox(
+                        height: 56 * widget.options.length.toDouble(),
                         child: Column(
                           children: widget.options
                               .map((answer) => CheckboxListTile(
@@ -75,72 +74,76 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                                   ))
                               .toList(),
                         ),
-                      )),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).primaryColorDark,
-                            width: 2),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20.0))), //
-                    child: RawMaterialButton(
-                      fillColor: Theme.of(context).secondaryHeaderColor,
-                      elevation: 0.0,
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(17.0),
                       ),
-                      onPressed: () async {
-                        QuestionaryAnswer answered = QuestionaryAnswer(
-                            widget.questionID.toString(),
-                            mapAnswers.toString());
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColorDark,
+                                width: 2),
+                            borderRadius: const BorderRadius.all(
+                                Radius.circular(20.0))), //
+                        child: RawMaterialButton(
+                          fillColor: Theme.of(context).secondaryHeaderColor,
+                          elevation: 0.0,
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17.0),
+                          ),
+                          onPressed: () async {
+                            QuestionaryAnswer answered = QuestionaryAnswer(
+                                widget.questionID.toString(),
+                                mapAnswers.toString());
 
-                        widget.questionarydone.answer.add(answered);
+                            widget.questionarydone.answer.add(answered);
 
-                        switch (widget.next) {
-                          case -1:
-                            {
-                              // updateQuest(
-                              //     context: context, answer: widget.questionarydone);
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const HomeScreen()));
+                            switch (widget.next) {
+                              case -1:
+                                {
+                                  // updateQuest(
+                                  //     context: context, answer: widget.questionarydone);
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HomeScreen()));
+                                }
+                                break;
+                              case 0:
+                                {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) => widget
+                                              .listQuestions![
+                                                  widget.questionID + 1]
+                                              .createWidget(
+                                                  widget.listQuestions!,
+                                                  widget.questionarydone)));
+                                }
+                                break;
+                              default:
+                                {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) => widget
+                                              .listQuestions![widget.next]
+                                              .createWidget(
+                                                  widget.listQuestions!,
+                                                  widget.questionarydone)));
+                                }
+                                break;
                             }
-                            break;
-                          case 0:
-                            {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) => widget
-                                          .listQuestions![widget.questionID + 1]
-                                          .createWidget(widget.listQuestions!,
-                                              widget.questionarydone)));
-                            }
-                            break;
-                          default:
-                            {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) => widget
-                                          .listQuestions![widget.next]
-                                          .createWidget(widget.listQuestions!,
-                                              widget.questionarydone)));
-                            }
-                            break;
-                        }
-                      },
-                      child: const Text("SUBMIT",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                          )),
-                    ),
-                  ),
-                  const SizedBox(height: 40.0),
-                  PercentDisk(
-                      value: widget.questionID / widget.listQuestions!.length),
-                ]))));
+                          },
+                          child: const Text("SUBMIT",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                              )),
+                        ),
+                      ),
+                      const SizedBox(height: 40.0),
+                      PercentDisk(
+                          value:
+                              widget.questionID / widget.listQuestions!.length),
+                    ]))));
   }
 }
