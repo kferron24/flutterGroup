@@ -8,6 +8,8 @@ import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../components/percent_disk.dart';
+
 class DichotomicQuestion extends StatefulWidget {
   final String? question;
   final int? questionID;
@@ -132,19 +134,9 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       ),
                     ),
                     const SizedBox(height: 40.0),
-                    CircularPercentIndicator(
-                      radius: 40.0,
-                      lineWidth: 13.0,
-                      animation: true,
-                      percent: 0.2,
-                      center: new Text(
-                        "20.0%",
-                        style: new TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15.0),
-                      ),
-                      circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Color.fromARGB(255, 0, 161, 172),
-                    ),
+                    PercentDisk(
+                        value:
+                            widget.questionID! / widget.listQuestions!.length),
                   ],
                 )))));
   }

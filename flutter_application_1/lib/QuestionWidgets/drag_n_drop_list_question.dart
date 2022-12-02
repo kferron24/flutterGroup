@@ -5,6 +5,7 @@ import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import '../components/percent_disk.dart';
 import '../home_screen.dart';
 
 class DragNDropListQuestion extends StatefulWidget {
@@ -53,8 +54,8 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                     Text(
                       widget.question!,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 0, 161, 172),
-                        fontSize: 40.0,
+                        color: Colors.black,
+                        fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -146,19 +147,9 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                       ),
                     ),
                     const SizedBox(height: 40.0),
-                    CircularPercentIndicator(
-                      radius: 40.0,
-                      lineWidth: 13.0,
-                      animation: true,
-                      percent: 0.8,
-                      center: const Text(
-                        "80.0%",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15.0),
-                      ),
-                      circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Color.fromARGB(255, 0, 161, 172),
-                    ),
+                    PercentDisk(
+                        value:
+                            widget.questionID / widget.listQuestions!.length),
                   ],
                 ))));
   }

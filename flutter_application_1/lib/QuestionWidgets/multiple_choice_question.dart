@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/components/percent_disk.dart';
 
 import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/question.dart';
@@ -51,8 +52,8 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                     child: Text(
                       widget.question!,
                       style: const TextStyle(
-                        fontSize: 40,
-                        color: Color.fromARGB(255, 0, 161, 172),
+                        color: Colors.black,
+                        fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -138,20 +139,8 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                     ),
                   ),
                   const SizedBox(height: 40.0),
-                  CircularPercentIndicator(
-                    radius: 40.0,
-                    lineWidth: 13.0,
-                    animation: true,
-                    percent: 0.6,
-                    center: const Text(
-                      "60.0%",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 15.0),
-                    ),
-                    circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: Color.fromARGB(255, 0, 161, 172),
-                  ),
-                  const SizedBox(height: 100.0),
+                  PercentDisk(
+                      value: widget.questionID / widget.listQuestions!.length),
                 ]))));
   }
 }

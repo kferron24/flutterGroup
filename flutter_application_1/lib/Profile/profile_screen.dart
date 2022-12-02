@@ -41,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                   const Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: TitleText(title: "Profile Screen"),),
+                          child: TitleText(title: "Your profile"),),
                   Container(
                     margin: const EdgeInsets.only(bottom: 16),
                     child: Row(

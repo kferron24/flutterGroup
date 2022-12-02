@@ -1,5 +1,6 @@
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_answer.dart';
 import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_done.dart';
+import 'package:flutter_application_1/components/percent_disk.dart';
 import 'package:flutter_application_1/firebase/firestore_profile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
@@ -146,19 +147,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                       ),
                     ),
                     const SizedBox(height: 40.0),
-                    CircularPercentIndicator(
-                      radius: 40.0,
-                      lineWidth: 13.0,
-                      animation: true,
-                      percent: widget.questionID / widget.listQuestions!.length,
-                      center: Text(
-                        "${100 * widget.questionID / widget.listQuestions!.length}%",
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15.0),
-                      ),
-                      circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Color.fromARGB(255, 0, 161, 172),
-                    ),
+                    PercentDisk(value: widget.questionID / widget.listQuestions!.length)
                   ],
                 )))));
   }

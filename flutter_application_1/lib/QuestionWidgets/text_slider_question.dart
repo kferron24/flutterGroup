@@ -5,6 +5,7 @@ import '../Profile/QuestionaryDone/questionary_answer.dart';
 import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import '../components/percent_disk.dart';
 import '../end_of_quizz.dart';
 
 class TextSliderQuestion extends StatefulWidget {
@@ -133,6 +134,10 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                             )),
                       ),
                     ),
+                    const SizedBox(height: 40.0),
+                    PercentDisk(
+                        value:
+                            widget.questionID / widget.listQuestions!.length),
                   ],
                 )))));
   }

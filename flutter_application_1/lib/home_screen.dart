@@ -25,20 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
-            child: SingleChildScrollView(
+            child: Center(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  "Home Screen",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColorLight,
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
                 const Text(
                   "Choose a Quizz",
                   style: TextStyle(
