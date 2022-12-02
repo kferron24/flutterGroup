@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "Choose a Quizz",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 25.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -184,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(32.0),
                     ),
-                    onPressed:()=> importJson(),
+                    onPressed: () => importJson(),
                     child: const Text("Import a questionary",
                         style: TextStyle(
                           color: Colors.white,
@@ -198,7 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 importJson() async {
-  FilePickerResult? result = await FilePicker.platform.pickFiles(type:FileType.any,allowMultiple: false);
+  FilePickerResult? result = await FilePicker.platform
+      .pickFiles(type: FileType.any, allowMultiple: false);
 
   if (result != null) {
     File file = File(result.files.single.path!);
