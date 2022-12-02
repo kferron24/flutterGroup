@@ -4,6 +4,7 @@ import '../Log/log_page.dart';
 import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class MultipleChoiceQuestion extends StatefulWidget {
   final String? question;
@@ -133,7 +134,21 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                           )),
                     ),
                   ),
-                  const SizedBox(height: 200.0),
+                  const SizedBox(height: 40.0),
+                  CircularPercentIndicator(
+                    radius: 40.0,
+                    lineWidth: 13.0,
+                    animation: true,
+                    percent: 0.6,
+                    center: const Text(
+                      "60.0%",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15.0),
+                    ),
+                    circularStrokeCap: CircularStrokeCap.round,
+                    progressColor: Color.fromARGB(255, 0, 161, 172),
+                  ),
+                  const SizedBox(height: 100.0),
                 ]))));
   }
 }

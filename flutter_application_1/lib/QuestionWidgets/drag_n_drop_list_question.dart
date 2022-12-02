@@ -4,6 +4,7 @@ import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class DragNDropListQuestion extends StatefulWidget {
   final String? question;
@@ -65,6 +66,7 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                             return ListTile(
                               key: Key('$index'),
                               title: Text(options[index]),
+                              trailing: const Icon(Icons.drag_indicator),
                               tileColor:
                                   index.isOdd ? oddItemColor : evenItemColor,
                             );
@@ -140,6 +142,20 @@ class _DragNDropListQuestionState extends State<DragNDropListQuestion> {
                               fontSize: 18.0,
                             )),
                       ),
+                    ),
+                    const SizedBox(height: 40.0),
+                    CircularPercentIndicator(
+                      radius: 40.0,
+                      lineWidth: 13.0,
+                      animation: true,
+                      percent: 0.8,
+                      center: const Text(
+                        "80.0%",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
+                      progressColor: Color.fromARGB(255, 0, 161, 172),
                     ),
                   ],
                 ))));

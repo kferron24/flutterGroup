@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_new
+
 import 'package:flutter/material.dart';
 import '../QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class DichotomicQuestion extends StatefulWidget {
   final String? question;
@@ -127,6 +130,20 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                               fontSize: 18.0,
                             )),
                       ),
+                    ),
+                    const SizedBox(height: 40.0),
+                    CircularPercentIndicator(
+                      radius: 40.0,
+                      lineWidth: 13.0,
+                      animation: true,
+                      percent: 0.2,
+                      center: new Text(
+                        "20.0%",
+                        style: new TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
+                      progressColor: Color.fromARGB(255, 0, 161, 172),
                     ),
                   ],
                 )))));

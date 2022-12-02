@@ -1,7 +1,7 @@
 import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
-
+import 'package:percent_indicator/percent_indicator.dart';
 import '../Log/log_page.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
@@ -71,7 +71,7 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                       ),
                       onRatingUpdate: (rating) {},
                     ),
-                    const SizedBox(height: 22.0),
+                    const SizedBox(height: 30.0),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -131,6 +131,20 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                               fontSize: 18.0,
                             )),
                       ),
+                    ),
+                    const SizedBox(height: 40.0),
+                    CircularPercentIndicator(
+                      radius: 40.0,
+                      lineWidth: 13.0,
+                      animation: true,
+                      percent: widget.questionID / widget.listQuestions!.length,
+                      center: Text(
+                        "${100 * widget.questionID / widget.listQuestions!.length}%",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
+                      progressColor: Color.fromARGB(255, 0, 161, 172),
                     ),
                   ],
                 )))));

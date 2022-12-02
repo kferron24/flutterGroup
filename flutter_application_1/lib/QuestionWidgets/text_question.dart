@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Log/log_page.dart';
 import 'package:flutter_application_1/QuestionClasses/answer.dart';
 import '../QuestionClasses/question.dart';
 import '../components/appbar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class TextQuestion extends StatefulWidget {
   final String? question;
@@ -121,6 +122,20 @@ class _TextQuestionState extends State<TextQuestion> {
                           fontSize: 18.0,
                         )),
                   ),
+                ),
+                const SizedBox(height: 40.0),
+                CircularPercentIndicator(
+                  radius: 40.0,
+                  lineWidth: 13.0,
+                  animation: true,
+                  percent: 0.4,
+                  center: const Text(
+                    "40.0%",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                  ),
+                  circularStrokeCap: CircularStrokeCap.round,
+                  progressColor: Color.fromARGB(255, 0, 161, 172),
                 ),
               ],
             ))));
