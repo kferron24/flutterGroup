@@ -72,12 +72,12 @@ class _DichotomicQuestionState extends State<DichotomicQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
+                              color: Theme.of(context).primaryColorDark,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))), //
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(

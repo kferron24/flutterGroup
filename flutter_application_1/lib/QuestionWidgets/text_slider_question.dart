@@ -81,7 +81,7 @@ class _TextSliderQuestionState extends State<TextSliderQuestion> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(

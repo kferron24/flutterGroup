@@ -30,10 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   "Home Screen",
                   style: TextStyle(
-                    color: Color.fromARGB(255, 0, 161, 172),
+                    color: Theme.of(context).primaryColorLight,
                     fontSize: 50.0,
                     fontWeight: FontWeight.bold,
                   ),

@@ -69,11 +69,13 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                       minRating: widget.range[0].toDouble(),
                       direction: Axis.horizontal,
                       allowHalfRating: true,
+                      glowColor: Theme.of(context).primaryColorLight,
+                      glow: false,
                       itemCount: widget.range[2],
                       itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => const Icon(
+                      itemBuilder: (context, _) => Icon(
                         Icons.star,
-                        color: Colors.blue,
+                        color: Theme.of(context).primaryColor,
                       ),
                       onRatingUpdate: (rating) {},
                     ),
@@ -82,12 +84,12 @@ class _StarRatingQuestionState extends State<StarRatingQuestion> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: const Color.fromRGBO(0, 53, 63, 1),
+                              color: Theme.of(context).primaryColorDark,
                               width: 2),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0))),
                       child: RawMaterialButton(
-                        fillColor: const Color.fromRGBO(212, 111, 77, 1),
+                        fillColor: Theme.of(context).secondaryHeaderColor,
                         elevation: 0.0,
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         shape: RoundedRectangleBorder(
