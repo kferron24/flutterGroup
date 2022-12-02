@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 
@@ -203,7 +204,10 @@ importJson() async {
   if (result != null) {
     File file = File(result.files.single.path!);
     String str = file.readAsStringSync();
-    print(str);
+    final data = json.decode(str);
+    final image_url = data['image_url'];
+    final questionary_name=data['questionary_name'];
+    print(data);
   } else {
     // User canceled the picker
   }
