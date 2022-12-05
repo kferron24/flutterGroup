@@ -27,7 +27,7 @@ class LogButtons extends StatelessWidget {
             elevation: 0.0,
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(32.0),
+              borderRadius: BorderRadius.circular(20.0),
             ),
             onPressed: () async {
               response = await loginUsingEmailPassword(
@@ -58,7 +58,7 @@ class LogButtons extends StatelessWidget {
             elevation: 0.0,
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(32.0),
+              borderRadius: BorderRadius.circular(20.0),
             ),
             onPressed: () async {
               response = await registerUsingEmailPassword(

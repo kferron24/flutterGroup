@@ -22,16 +22,23 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return AppBar(
       centerTitle: true,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            margin: const EdgeInsets.only(right: 5.0, left: 5.0),
-            child: Text(
-              'QUIZZ',
-              style:
-                  TextStyle(color: Theme.of(context).primaryColor, fontSize: 32),
-            ),
-          ),
+              margin: const EdgeInsets.only(right: 5.0, left: 5.0),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/logo.png',
+                    height: 40,
+                  ),
+                  Text(
+                    'ZOUÏQUE',
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor, fontSize: 20),
+                  ),
+                ],
+              )),
           Row(
             children: [
               ProfileButton(type: widget.type),

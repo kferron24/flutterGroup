@@ -14,13 +14,10 @@ import '../QuestionClasses/question.dart';
 import '../QuestionClasses/slider_class.dart';
 import '../QuestionClasses/text_class.dart';
 
-Future<List<Question>> readJsonFile(String filePath) async {
-  final String response = await rootBundle.loadString('assets/questions.json');
-  final data = json.decode(response);
-  var questionsList = data['questions'];
+Future<List<Question>> readJsonFile(List<dynamic> questionary) async {
   List<Question> list = [];
 
-  for (var question in questionsList) {
+  for (var question in questionary) {
     switch (question['type']) {
       case "DICHOTOMIC":
         {
@@ -96,7 +93,8 @@ Future<List<Question>> readJsonFile(String filePath) async {
 }
 
 class Questionary extends StatefulWidget {
-  const Questionary({super.key});
+  final List<dynamic> json;
+  const Questionary({super.key, required this.json});
 
   @override
   State<Questionary> createState() => _QuestionaryState();
@@ -112,7 +110,7 @@ class _QuestionaryState extends State<Questionary> {
   @override
   void initState() {
     super.initState();
-    readJsonFile('assets/questions.json').then((value) => setState(() {
+    readJsonFile(widget.json).then((value) => setState(() {
           questions.addAll(value);
         }));
   }

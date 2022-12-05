@@ -6,6 +6,7 @@ class LogWelcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      Image.asset('assets/logo.png', height: 180,),
       Text(
         "Login to the app",
         style: TextStyle(

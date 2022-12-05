@@ -10,7 +10,7 @@ class ProfileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 5.0, left: 5.0),
+      margin: const EdgeInsets.only(left: 5.0),
       child: RawMaterialButton(
           fillColor: Theme.of(context).primaryColor,
           elevation: 0.0,

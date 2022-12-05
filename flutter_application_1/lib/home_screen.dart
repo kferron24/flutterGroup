@@ -3,12 +3,11 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Profile/QuestionaryDone/questionary_class.dart';
+import 'package:flutter_application_1/firebase/firebase_import_questionary.dart';
+import 'QuestionWidgets/questionary.dart';
 import 'storage/storage.dart';
 
-import 'package:flutter_application_1/QuestionWidgets/questionary.dart';
-import 'package:flutter_application_1/QuestionWidgets/questionary2.dart';
-import 'package:flutter_application_1/QuestionWidgets/questionary3.dart';
-import 'package:flutter_application_1/QuestionWidgets/questionary4.dart';
 import 'components/appbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +18,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<QuestionaryClass> listQuestionaries = [];
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    final List<QuestionaryClass> questionaries = await getQuestionaries();
+    print("PAPA ${questionaries.toString}");
+    setState(() {
+      listQuestionaries = questionaries;
+    });
+    print(listQuestionaries);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Storage storage = Storage();
@@ -26,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: const CustomAppBar(type: 'Profile'),
         body: Padding(
             padding: const EdgeInsets.all(30.0),
-            child: Center(
+            child: SingleChildScrollView(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,142 +47,59 @@ class _HomeScreenState extends State<HomeScreen> {
                   "Choose a Quizz",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 25.0,
+                    fontSize: 35.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 22.0),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const Questionary()));
-                        }, // Image tapped
-                        splashColor: Colors.white10, // Splash color over image
-                        child: FutureBuilder(
-                            future: storage.downloadURL('movie.jpg'),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<dynamic> snapshot) {
-                              if (snapshot.connectionState ==
-                                      ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    width: 150,
-                                    height: 100,
+                ...listQuestionaries
+                    .map((questionary) => [
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => Questionary(json: questionary.json['questions'])))
+                            },
+                            child: Card(
+                              color: Theme.of(context).primaryColorDark,
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(20.0), //<-- SEE HERE
+                              ),
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(20),
+                                    ),
                                     child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
-                              }
-                              if (snapshot.connectionState ==
-                                      ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return const CircularProgressIndicator();
-                              }
-                              return Container();
-                            }),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const Questionary2()));
-                        }, // Image tapped
-                        splashColor: Colors.white10, // Splash color over image
-                        child: FutureBuilder(
-                            future: storage.downloadURL('cars.jpg'),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<dynamic> snapshot) {
-                              if (snapshot.connectionState ==
-                                      ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    width: 150,
-                                    height: 100,
-                                    child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
-                              }
-                              if (snapshot.connectionState ==
-                                      ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return const CircularProgressIndicator();
-                              }
-                              return Container();
-                            }),
-                      ),
-                    ]),
-                const SizedBox(height: 15.0),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const Questionary3()));
-                        }, // Image tapped
-                        splashColor: Colors.white10, // Splash color over image
-                        child: FutureBuilder(
-                            future: storage.downloadURL('sport.jpg'),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<dynamic> snapshot) {
-                              if (snapshot.connectionState ==
-                                      ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    width: 150,
-                                    height: 100,
-                                    child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
-                              }
-                              if (snapshot.connectionState ==
-                                      ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return const CircularProgressIndicator();
-                              }
-                              return Container();
-                            }),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const Questionary4()));
-                        }, // Image tapped
-                        splashColor: Colors.white10, // Splash color over image
-                        child: FutureBuilder(
-                            future: storage.downloadURL('videogame.jpg'),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<dynamic> snapshot) {
-                              if (snapshot.connectionState ==
-                                      ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    width: 150,
-                                    height: 100,
-                                    child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
-                              }
-                              if (snapshot.connectionState ==
-                                      ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return const CircularProgressIndicator();
-                              }
-                              return Container();
-                            }),
-                      ),
-                    ]),
-                const SizedBox(height: 50.0),
+                                      questionary.json['image_url'].toString(),
+                                      height: 180,
+                                      width: 300,
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Text(
+                                      questionary.json['questionary_name']
+                                          .toString(),
+                                      style: const TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 25.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 15.0),
+                        ])
+                    .expand((w) => w)
+                    .toList(),
+                const SizedBox(height: 30.0),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -179,35 +108,37 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(35.0))), //
                   child: RawMaterialButton(
-                    fillColor: const Color.fromRGBO(0, 53, 63, 1),
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     elevation: 0.0,
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                    onPressed:()=> importJson(),
-                    child: const Text("Import a questionary",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        )),
+                    onPressed: () => importJson(),
+                    child: const Text(
+                      "Import a questionary",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
             ))));
   }
 }
 
 importJson() async {
-  FilePickerResult? result = await FilePicker.platform.pickFiles(type:FileType.any,allowMultiple: false);
+  FilePickerResult? result = await FilePicker.platform
+      .pickFiles(type: FileType.any, allowMultiple: false);
 
   if (result != null) {
     File file = File(result.files.single.path!);
     String str = file.readAsStringSync();
     final data = json.decode(str);
-    final image_url = data['image_url'];
-    final questionary_name=data['questionary_name'];
-    print(data);
+    setQuestionary(data);
   } else {
     // User canceled the picker
   }
